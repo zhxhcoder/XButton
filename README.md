@@ -1,9 +1,7 @@
 # XButton
 [XButton取代各种shape文件](https://www.jianshu.com/p/40887388770e)
 
-参考文章
-
-https://www.jianshu.com/p/40887388770e
+参考文章 https://www.jianshu.com/p/40887388770e
 
 参考图片
 
