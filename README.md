@@ -48,7 +48,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 ~~~
-空心圆角矩形，需配置两个字段
+空心圆角矩形，需配置三个字段
 
 ~~~
         app:XangleCorner="45dp"    //表示圆角
