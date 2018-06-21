@@ -47,7 +47,6 @@
         app:XangleCorner="2dp"
         app:XdefaultColor="@color/colorPrimary"
         app:XpressedColor="@color/colorPrimaryDark"
-        app:XstrokeWidth="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
