@@ -28,10 +28,27 @@ XButton取代各种shape文件
         app:XpressedColor="@color/colorPrimaryDark" //按压后的颜色
 ~~~
 
+~~~
+    <com.zhxh.android.xbuttonlib.XButton
+        android:id="@+id/XButton5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="276dp"
+        android:text="圆形 "
+        android:textColor="@color/colorPrimary"
+        app:XangleCorner="45dp"
+        app:XstrokeColor="@color/colorPrimary"
+        app:XstrokeWidth="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+~~~
 空心圆角矩形，需配置两个字段
 
 ~~~
-        app:XangleCorner="2dp"   //表示圆角
+        app:XangleCorner="45dp"    //表示圆角
         app:XstrokeColor="@color/colorPrimary" //表示边框颜色
         app:XstrokeWidth="1dp"               //表示边框宽度
 ~~~
