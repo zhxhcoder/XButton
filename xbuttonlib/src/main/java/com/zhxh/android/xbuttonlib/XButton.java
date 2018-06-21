@@ -44,12 +44,9 @@ public class XButton extends AppCompatButton {
         defaultColor = a.getColor(R.styleable.XButton_XdefaultColor, defaultColor);
         pressedColor = a.getColor(R.styleable.XButton_XpressedColor, pressedColor);
         solidColor = a.getColor(R.styleable.XButton_XsolidColor, solidColor);
-        strokeColor = a.getColor(R.styleable.XButton_XsolidColor, strokeColor);
-        angleCorner = a.getColor(R.styleable.XButton_XsolidColor, strokeColor);
-
+        strokeColor = a.getColor(R.styleable.XButton_XstrokeColor, strokeColor);
         angleCorner = a.getDimensionPixelSize(R.styleable.XButton_XangleCorner, angleCorner);
         strokeWidth = a.getDimensionPixelSize(R.styleable.XButton_XstrokeWidth, strokeWidth);
-
 
         setGravity(Gravity.CENTER);
         gradientDrawable = new GradientDrawable();
