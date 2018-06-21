@@ -1,5 +1,8 @@
 # XButton
-XButton取代各种shape文件
+[XButton取代各种shape文件](https://www.jianshu.com/p/40887388770e)
+参考文章
+https://www.jianshu.com/p/40887388770e
+
 参考图片
 
 ![](https://github.com/zhxhcoder/XButton/blob/master/screenshots/xbutton.png)
