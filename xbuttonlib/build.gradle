@@ -21,8 +21,38 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    android.libraryVariants.all {
+        variant ->
+            variant.outputs.all {
+                outputFileName = "xbutton.aar"
+            }
+    }
 }
 
+this.project.afterEvaluate {
+    def buildTask = this.project.tasks.getByName('assembleRelease')
+    if (buildTask == null) throw GradleException
+    buildTask.doLast {
+        copyApk.execute()
+    }
+}
+
+/** 执行完成打包后将文件复制到主项目的资源文件中*/
+task copyApk {
+    doLast {
+        if (rootProject.file('app/libs/xbutton.aar').exists()) {
+            println('我先删除了旧的xbutton.aar')
+            rootProject.file('pp/libs/xbutton.aar').delete()
+        }
+        copy {
+            from "${buildDir}/outputs/aar/xbutton.aar"
+            into rootProject.file('app/libs/')
+            println('新的xbutton.aar已经复制到app/libs/')
+        }
+    }
+
+}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
