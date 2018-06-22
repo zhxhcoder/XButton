@@ -7,6 +7,22 @@
 
 ![](https://github.com/zhxhcoder/XButton/blob/master/screenshots/xbutton.png)
 
+Maven或Gradle引用
+
+~~~
+<dependency>
+  <groupId>com.zhxh</groupId>
+  <artifactId>xbuttonlib</artifactId>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+~~~
+
+~~~
+compile 'com.zhxh:xbuttonlib:1.0.0'
+~~~
+
+
 ~~~
     <com.zhxh.android.xbuttonlib.XButton
         android:id="@+id/XButton4"
@@ -55,4 +71,6 @@
         app:XstrokeColor="@color/colorPrimary" //表示边框颜色
         app:XstrokeWidth="1dp"               //表示边框宽度
 ~~~
+
+
 
