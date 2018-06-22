@@ -7,7 +7,7 @@
 
 ![](https://github.com/zhxhcoder/XButton/blob/master/screenshots/xbutton.png)
 
-Maven或Gradle引用
+通过Maven或Gradle引用
 
 ~~~
 <dependency>
@@ -22,6 +22,7 @@ Maven或Gradle引用
 compile 'com.zhxh:xbuttonlib:1.0.0'
 ~~~
 
+在项目中的使用
 
 ~~~
     <com.zhxh.android.xbuttonlib.XButton
