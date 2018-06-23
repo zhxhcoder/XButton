@@ -8,7 +8,6 @@ import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
-import android.view.View;
 
 public class XButton extends AppCompatButton {
 
@@ -35,7 +34,6 @@ public class XButton extends AppCompatButton {
     public XButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-
         init(context, attrs);
     }
 
@@ -50,20 +48,23 @@ public class XButton extends AppCompatButton {
 
         setGravity(Gravity.CENTER);
         gradientDrawable = new GradientDrawable();
+
+        setBtnDrawable();
+
+        //设置按钮点击之后的颜色更换
+        setOnTouchListener((arg0, event) -> {
+            setBackgroundDrawable(gradientDrawable);
+            return setColor(event.getAction());
+        });
+    }
+
+    private void setBtnDrawable() {
         //设置按钮颜色
         gradientDrawable.setColor(defaultColor);
         //设置按钮的边框宽度
         gradientDrawable.setStroke(strokeWidth, strokeColor);
         //设置按钮圆角大小
         gradientDrawable.setCornerRadius(angleCorner);
-        //设置按钮点击之后的颜色更换
-        setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View arg0, MotionEvent event) {
-                setBackgroundDrawable(gradientDrawable);
-                return setColor(event.getAction());
-            }
-        });
         setBackgroundDrawable(gradientDrawable);
     }
 
@@ -89,5 +90,21 @@ public class XButton extends AppCompatButton {
         }
 
         return isTouchPass;
+    }
+
+    /**
+     * 对外定义接口
+     **/
+    public void setPressedColor(int pressedColor) {
+        this.pressedColor = pressedColor;
+        setBtnDrawable();
+    }
+    public void setDefaultColor(int defaultColor) {
+        this.defaultColor = defaultColor;
+        setBtnDrawable();
+    }
+    public void setStrokeColor(int strokeColor) {
+        this.strokeColor = strokeColor;
+        setBtnDrawable();
     }
 }
