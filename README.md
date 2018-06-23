@@ -13,15 +13,15 @@
 <dependency>
   <groupId>com.zhxh</groupId>
   <artifactId>xbuttonlib</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <type>pom</type>
 </dependency>
 ~~~
 
 ~~~
-compile 'com.zhxh:xbuttonlib:1.0.0'
+compile 'com.zhxh:xbuttonlib:1.0.1'
 或
-implementation 'com.zhxh:xbuttonlib:1.0.0'
+implementation 'com.zhxh:xbuttonlib:1.0.1'
 ~~~
 
 在项目中的使用
@@ -75,5 +75,10 @@ implementation 'com.zhxh:xbuttonlib:1.0.0'
         app:XstrokeWidth="1dp"               //表示边框宽度
 ~~~
 
+1.0.1版本加上了可以代码控制的功能
 
+比如
+~~~
+            button1.setDefaultColor(0xffff0000);
+~~~
 
