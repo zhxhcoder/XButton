@@ -20,6 +20,8 @@
 
 ~~~
 compile 'com.zhxh:xbuttonlib:1.0.0'
+或
+implementation 'com.zhxh:xbuttonlib:1.0.0'
 ~~~
 
 在项目中的使用
