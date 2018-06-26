@@ -1,4 +1,4 @@
-package com.zhxh.android.xbutton;
+package com.zhxh.xbutton;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.zhxh.android.xbutton", appContext.getPackageName());
+        assertEquals("com.zhxh.xbutton", appContext.getPackageName());
     }
 }

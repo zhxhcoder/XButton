@@ -1,4 +1,4 @@
-package com.zhxh.android.xbuttonlib;
+package com.zhxh.xbuttonlib;
 
 import android.content.Context;
 import android.content.res.TypedArray;

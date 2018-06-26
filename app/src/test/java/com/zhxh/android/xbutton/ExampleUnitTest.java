@@ -1,4 +1,4 @@
-package com.zhxh.android.xbutton;
+package com.zhxh.xbutton;
 
 import org.junit.Test;
 

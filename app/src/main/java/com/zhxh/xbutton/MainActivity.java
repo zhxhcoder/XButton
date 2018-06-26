@@ -1,10 +1,10 @@
-package com.zhxh.android.xbutton;
+package com.zhxh.xbutton;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.zhxh.android.xbuttonlib.XButton;
+import com.zhxh.xbuttonlib.XButton;
 
 public class MainActivity extends AppCompatActivity {
 

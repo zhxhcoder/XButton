@@ -13,21 +13,21 @@
 <dependency>
   <groupId>com.zhxh</groupId>
   <artifactId>xbuttonlib</artifactId>
-  <version>1.0.1</version>
+  <version>1.2</version>
   <type>pom</type>
 </dependency>
 ~~~
 
 ~~~
-compile 'com.zhxh:xbuttonlib:1.0.1'
+compile 'com.zhxh:xbuttonlib:1.2'
 或
-implementation 'com.zhxh:xbuttonlib:1.0.1'
+implementation 'com.zhxh:xbuttonlib:1.2'
 ~~~
 
 在项目中的使用
 
 ~~~
-    <com.zhxh.android.xbuttonlib.XButton
+    <com.zhxh.xbuttonlib.XButton
         android:id="@+id/XButton4"
         android:layout_width="100dp"
         android:layout_height="40dp"
@@ -51,7 +51,7 @@ implementation 'com.zhxh:xbuttonlib:1.0.1'
 ~~~
 
 ~~~
-    <com.zhxh.android.xbuttonlib.XButton
+    <com.zhxh.xbuttonlib.XButton
         android:id="@+id/XButton5"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -75,7 +75,7 @@ implementation 'com.zhxh:xbuttonlib:1.0.1'
         app:XstrokeWidth="1dp"               //表示边框宽度
 ~~~
 
-1.0.1版本加上了可以代码控制的功能
+1.2版本加上了可以代码控制的功能
 
 比如
 ~~~

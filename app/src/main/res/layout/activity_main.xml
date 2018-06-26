@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.zhxh.android.xbuttonlib.XButton
+    <com.zhxh.xbuttonlib.XButton
         android:id="@+id/XButton1"
         android:layout_width="100dp"
         android:layout_height="40dp"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.zhxh.android.xbuttonlib.XButton
+    <com.zhxh.xbuttonlib.XButton
         android:id="@+id/XButton2"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -35,7 +35,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.zhxh.android.xbuttonlib.XButton
+    <com.zhxh.xbuttonlib.XButton
         android:id="@+id/XButton3"
         android:layout_width="100dp"
         android:layout_height="40dp"
@@ -50,7 +50,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.zhxh.android.xbuttonlib.XButton
+    <com.zhxh.xbuttonlib.XButton
         android:id="@+id/XButton4"
         android:layout_width="100dp"
         android:layout_height="40dp"
@@ -65,7 +65,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.zhxh.android.xbuttonlib.XButton
+    <com.zhxh.xbuttonlib.XButton
         android:id="@+id/XButton5"
         android:layout_width="50dp"
         android:layout_height="50dp"
