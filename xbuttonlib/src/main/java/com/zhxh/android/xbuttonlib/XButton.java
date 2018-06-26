@@ -68,6 +68,7 @@ public class XButton extends AppCompatButton {
         setBackgroundDrawable(gradientDrawable);
     }
 
+
     //处理按钮点击事件无效
     @Override
     public void setOnClickListener(OnClickListener l) {
