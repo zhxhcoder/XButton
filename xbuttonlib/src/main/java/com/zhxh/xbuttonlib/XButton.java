@@ -12,6 +12,11 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
 
+/**
+ * @author zhxh
+ * @version 1.4
+ * @date created 2018/05/23
+ */
 public class XButton extends AppCompatButton {
 
     GradientDrawable gradientDrawable;
@@ -23,12 +28,13 @@ public class XButton extends AppCompatButton {
 
     private int angleCorner = 0;
     private int strokeWidth = 0;
-    private int drawablePadding = 0;
     private int drawableWidth;
     private DrawablePosition position;
-    Rect bounds;
 
-    private enum DrawablePosition {
+    Rect bounds;
+    int drawablePadding = 0;
+
+    enum DrawablePosition {
         NONE,
         LEFT_AND_RIGHT,
         LEFT,
@@ -113,6 +119,7 @@ public class XButton extends AppCompatButton {
     }
 
 
+    //重新设置位置
     @Override
     public void setCompoundDrawablesWithIntrinsicBounds(Drawable left, Drawable top, Drawable right, Drawable bottom) {
         super.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom);
@@ -173,9 +180,8 @@ public class XButton extends AppCompatButton {
         return isTouchPass;
     }
 
-    /**
-     * 对外定义接口
-     **/
+
+    //对外定义接口
     public void setPressedColor(int pressedColor) {
         this.pressedColor = pressedColor;
         setBtnDrawable();

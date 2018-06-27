@@ -13,15 +13,15 @@
 <dependency>
   <groupId>com.zhxh</groupId>
   <artifactId>xbuttonlib</artifactId>
-  <version>1.3</version>
+  <version>1.4</version>
   <type>pom</type>
 </dependency>
 ~~~
 
 ~~~
-compile 'com.zhxh:xbuttonlib:1.3'
+compile 'com.zhxh:xbuttonlib:1.4'
 或
-implementation 'com.zhxh:xbuttonlib:1.3'
+implementation 'com.zhxh:xbuttonlib:1.4'
 ~~~
 
 在项目中的使用
@@ -91,3 +91,31 @@ implementation 'com.zhxh:xbuttonlib:1.3'
 我们先自定义属性iconPadding来设置间距，并提供方法给外部调用
 重写setCompoundDrawablesWithIntrinsicBounds()方法来获取我们设置的drawable宽度。
 最后重写onLayout方法，因为这里面改变了一些位置属性，需要通过重新布局才能起作用。
+
+
+~~~
+    <com.zhxh.xbuttonlib.XButton
+        android:id="@+id/XButton6"
+        android:layout_width="322dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="352dp"
+        android:drawableRight="@drawable/ic_arrow"
+        android:gravity="center"
+        android:text="圆角矩形"
+        android:textColor="@android:color/white"
+        app:XangleCorner="2dp"
+        app:XdefaultColor="@color/colorPrimary"
+        app:XdrawablePadding="10dp"
+        app:XpressedColor="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+~~~
+
+~~~
+        app:XdrawablePadding="10dp"
+~~~
+
+在这里加入了新的配置项
+
