@@ -82,3 +82,12 @@ implementation 'com.zhxh:xbuttonlib:1.3'
             button1.setDefaultColor(0xffff0000);
 ~~~
 
+1.4版本加上了自定义的XdrawablePadding属性
+
+原生的android:drawablePadding这个属性在 我们给view设置的宽度或者高度足够小（以至于将两者挤压在一起）的时候，这个属性才会起作用
+
+可以通过自定义View来精确的计算：
+
+我们先自定义属性iconPadding来设置间距，并提供方法给外部调用
+重写setCompoundDrawablesWithIntrinsicBounds()方法来获取我们设置的drawable宽度。
+最后重写onLayout方法，因为这里面改变了一些位置属性，需要通过重新布局才能起作用。

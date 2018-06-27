@@ -7,5 +7,6 @@
         <attr name="XstrokeColor" format="color" />
         <attr name="XangleCorner" format="dimension" />
         <attr name="XstrokeWidth" format="dimension" />
+        <attr name="XdrawablePadding" format="dimension" />
     </declare-styleable>
 </resources>
