@@ -24,7 +24,7 @@ compile 'com.zhxh:xbuttonlib:1.4'
 implementation 'com.zhxh:xbuttonlib:1.4'
 ~~~
 
-在项目中的使用
+# 在项目中的使用
 
 ~~~
     <com.zhxh.xbuttonlib.XButton
@@ -75,14 +75,32 @@ implementation 'com.zhxh:xbuttonlib:1.4'
         app:XstrokeWidth="1dp"               //表示边框宽度
 ~~~
 
-1.3版本加上了可以代码控制的功能
+# 1.3版本加上了可以代码控制的功能
 
 比如
+~~~
+    //对外定义接口
+    public void setPressedColor(int pressedColor) {
+        this.pressedColor = pressedColor;
+        setBtnDrawable();
+    }
+
+    public void setDefaultColor(int defaultColor) {
+        this.defaultColor = defaultColor;
+        setBtnDrawable();
+    }
+
+    public void setStrokeColor(int strokeColor) {
+        this.strokeColor = strokeColor;
+        setBtnDrawable();
+    }
+~~~
+使用方法
 ~~~
             button1.setDefaultColor(0xffff0000);
 ~~~
 
-1.4版本加上了自定义的XdrawablePadding属性
+# 1.4版本加上了自定义的XdrawablePadding属性
 
 原生的android:drawablePadding这个属性在 我们给view设置的宽度或者高度足够小（以至于将两者挤压在一起）的时候，这个属性才会起作用，也即在图片和文字之间会有间距产生。如果你的view所设置的宽度或者高度大于drawableLeft/drawableRight或者drawableTop/drawableBottom所产生的间距，那么这个属性当然也就不会起作用。
 
