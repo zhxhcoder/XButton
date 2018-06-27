@@ -1,5 +1,6 @@
 package com.zhxh.xbuttonlib;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -57,6 +58,7 @@ public class XButton extends AppCompatButton {
         init(context, attrs);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void init(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.XButton);
         defaultColor = a.getColor(R.styleable.XButton_XdefaultColor, defaultColor);
