@@ -131,9 +131,12 @@ implementation 'com.zhxh:xbuttonlib:1.4'
         app:layout_constraintTop_toTopOf="parent" />
 ~~~
 
+在这里加入新的配置XdrawablePadding
 ~~~
         app:XdrawablePadding="10dp"
 ~~~
 
-在这里加入了新的配置项
+# 下个版本计划
 
+1，自定义动画效果
+2，走马灯效果
