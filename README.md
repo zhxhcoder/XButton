@@ -88,7 +88,7 @@ implementation 'com.zhxh:xbuttonlib:1.4'
 
 可以通过自定义View来精确的计算：
 
-我们先自定义属性iconPadding来设置间距，并提供方法给外部调用
+我们先自定义属性drawablePadding来设置间距，并提供方法给外部调用
 重写setCompoundDrawablesWithIntrinsicBounds()方法来获取我们设置的drawable宽度。
 最后重写onLayout方法，因为这里面改变了一些位置属性，需要通过重新布局才能起作用。
 
