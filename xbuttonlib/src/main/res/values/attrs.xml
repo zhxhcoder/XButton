@@ -8,5 +8,6 @@
         <attr name="XangleCorner" format="dimension" />
         <attr name="XstrokeWidth" format="dimension" />
         <attr name="XdrawablePadding" format="dimension" />
+        <attr name="XisShaderAnim" format="boolean" />
     </declare-styleable>
 </resources>

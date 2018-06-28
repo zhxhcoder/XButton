@@ -64,6 +64,7 @@
         app:XangleCorner="2dp"
         app:XstrokeColor="@color/colorPrimary"
         app:XstrokeWidth="1dp"
+        app:XisShaderAnim="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
