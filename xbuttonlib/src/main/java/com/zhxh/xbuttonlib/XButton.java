@@ -17,10 +17,9 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
 
+
 /**
- * @author zhxh
- * @version 1.4
- * @date created 2018/05/23
+ * Created by zhxh on 2018/05/23
  */
 public class XButton extends AppCompatButton {
 
