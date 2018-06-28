@@ -136,7 +136,13 @@ implementation 'com.zhxh:xbuttonlib:1.4'
         app:XdrawablePadding="10dp"
 ~~~
 
+# 2.1版本加上了动画设置
+
+~~~
+        app:XisShaderAnim="true"
+
+~~~
+
 # 下个版本计划
 
-1，自定义动画效果
-2，走马灯效果
+1，上下滚动文字

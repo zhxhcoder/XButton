@@ -113,9 +113,9 @@ public class XButton extends AppCompatButton {
 
         postInvalidate();
 
-        ValueAnimator animator = ValueAnimator.ofInt(0, 255);
-        animator.setDuration(10000);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        ValueAnimator animator1 = ValueAnimator.ofInt(0, 255);
+        animator1.setDuration(10000);
+        animator1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 animatedValue = (int) animation.getAnimatedValue();
@@ -125,9 +125,9 @@ public class XButton extends AppCompatButton {
                     colorEnd = Color.rgb(animatedValue, 0, 255 - animatedValue);
 
                 } else if (animatedValue == 255) {
-                    ValueAnimator animator1 = ValueAnimator.ofInt(0, 255);
-                    animator1.setDuration(2500);
-                    animator1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    ValueAnimator animator2 = ValueAnimator.ofInt(0, 255);
+                    animator2.setDuration(2500);
+                    animator2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                         @Override
                         public void onAnimationUpdate(ValueAnimator animation) {
                             animatedValue1 = (int) animation.getAnimatedValue();
@@ -135,9 +135,9 @@ public class XButton extends AppCompatButton {
                             colorEnd = Color.rgb(255, 0, animatedValue1);
 
                             if (animatedValue1 == 255) {
-                                ValueAnimator animator2 = ValueAnimator.ofInt(0, 255);
-                                animator2.setDuration(2500);
-                                animator2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                                ValueAnimator animator3 = ValueAnimator.ofInt(0, 255);
+                                animator3.setDuration(2500);
+                                animator3.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                                     @Override
                                     public void onAnimationUpdate(ValueAnimator animation) {
                                         int animatedValue2 = (int) animation.getAnimatedValue();
@@ -147,21 +147,20 @@ public class XButton extends AppCompatButton {
 
                                     }
                                 });
-                                animator2.start();
+                                animator3.start();
                             }
 
                             invalidate();
-
                         }
                     });
-                    animator1.start();
+                    animator2.start();
                 }
 
                 invalidate();
             }
         });
 
-        animator.start();
+        animator1.start();
 
         requestLayout();
     }
