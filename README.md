@@ -13,15 +13,15 @@
 <dependency>
   <groupId>com.zhxh</groupId>
   <artifactId>xbuttonlib</artifactId>
-  <version>1.4</version>
+  <version>2.1</version>
   <type>pom</type>
 </dependency>
 ~~~
 
 ~~~
-compile 'com.zhxh:xbuttonlib:1.4'
+compile 'com.zhxh:xbuttonlib:2.1'
 或
-implementation 'com.zhxh:xbuttonlib:1.4'
+implementation 'com.zhxh:xbuttonlib:2.1'
 ~~~
 
 # 在项目中的使用
