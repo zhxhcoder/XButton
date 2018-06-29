@@ -45,6 +45,7 @@ public final class XGifButton extends GifTextView {
 
         try {
             gifDrawable = new XGifDrawable(context.getResources(), rGif);
+            gifDrawable.setLoopCount(1);
             this.setBackground(gifDrawable);
             return this;
         } catch (IOException e) {
@@ -71,6 +72,11 @@ public final class XGifButton extends GifTextView {
         invalidate();
     }
 
+    public boolean isAnimComplete() {
+        return isAnimComplete;
+    }
+
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -92,7 +98,6 @@ public final class XGifButton extends GifTextView {
     }
 
     public void showFirstFrame() {
-        isAnimComplete = false;
         Drawable drawable = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(0));
         this.setBackground(drawable);
         this.setClickable(true);
@@ -101,7 +106,7 @@ public final class XGifButton extends GifTextView {
 
     public void showLastFrame() {
         gifDrawable.stop();
-        isAnimComplete = true;
+
         Drawable drawable = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(gifDrawable.getNumberOfFrames() - 1));
         this.setBackground(drawable);
         this.setClickable(false);

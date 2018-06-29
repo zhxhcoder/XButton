@@ -1,19 +1,13 @@
 package com.zhxh.xbutton;
 
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Toast;
 
 import com.zhxh.xbuttonlib.XButton;
 import com.zhxh.xbuttonlib.XGifButton;
-import com.zhxh.xbuttonlib.XGifDrawable;
-
-import java.io.IOException;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -28,25 +22,28 @@ public class MainActivity extends AppCompatActivity {
         XButton button4 = findViewById(R.id.XButton4);
         XGifButton gifButton = findViewById(R.id.gifText);
 
-        gifButton.bindGifSource(R.drawable.like_bg_anim);
-        gifButton.bindBeforeTextColor(Color.parseColor("#ffffff"));
-        gifButton.bindAfterTextColor(Color.parseColor("#ff4c51"));
+        gifButton.bindGifSource(R.drawable.like_bg_anim)
+                .bindBeforeTextColor(Color.parseColor("#ffffff"))
+                .bindAfterTextColor(Color.parseColor("#ff4c51"));
 
         gifButton.setIsAnimComplete(false);
 
         gifButton.setOnClickListener(v -> {
 
-            gifButton.getGifDrawable().addAnimationListener(loopNumber -> {
-                gifButton.setIsAnimComplete(true);
-                gifButton.setText(String.valueOf(Integer.parseInt(gifButton.getText().toString()) + 1));
-            });
+            if (!gifButton.isAnimComplete()) {
+                gifButton.getGifDrawable().addAnimationListener(loopNumber -> {
 
-            gifButton.bindGifSource(R.drawable.like_bg_anim);
+                    gifButton.setText(String.valueOf(Integer.parseInt(gifButton.getText().toString()) + 1));
+                    gifButton.setIsAnimComplete(true);
+                });
+
+                gifButton.bindGifSource(R.drawable.like_bg_anim);
+            }
 
         });
 
 
-/*        try {
+        /* try {
             XGifDrawable gifDrawable = new XGifDrawable(getResources(), R.drawable.like_bg_anim);
 
             Drawable drawable = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(0));
