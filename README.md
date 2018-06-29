@@ -5,7 +5,7 @@
 
 参考图片
 
-![](https://github.com/zhxhcoder/XButton/blob/master/screenshots/xbutton.png)
+![](https://github.com/zhxhcoder/XButton/blob/master/screenshots/xbutton.gif)
 
 通过Maven或Gradle引用
 
