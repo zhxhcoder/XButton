@@ -106,6 +106,12 @@
         android:id="@+id/gifText"
         android:layout_width="55dp"
         android:layout_height="36dp"
-        android:background="@drawable/like_bg_anim" />
+        android:gravity="center_horizontal"
+        android:background="@drawable/like_bg_anim"
+        android:paddingTop="22dp"
+        android:text="dd"
+        app:loopCount="0"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="10sp" />
 
 </android.support.constraint.ConstraintLayout>

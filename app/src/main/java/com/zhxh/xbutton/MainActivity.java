@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.zhxh.xbuttonlib.XButton;
 
+import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifTextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,7 +22,10 @@ public class MainActivity extends AppCompatActivity {
         XButton button4 = findViewById(R.id.XButton4);
         GifTextView gifText = findViewById(R.id.gifText);
 
+        gifText.setBackgroundResource(R.drawable.like_bg_anim);
         gifText.setFreezesAnimation(true);
+        ((GifDrawable)gifText.getBackground()).setLoopCount(1);
+
 
         button1.setOnClickListener(v -> {
             Toast.makeText(this, "button1", Toast.LENGTH_LONG).show();
