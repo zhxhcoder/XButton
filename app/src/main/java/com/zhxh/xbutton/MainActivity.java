@@ -25,28 +25,46 @@ public class MainActivity extends AppCompatActivity {
         XButton button1 = findViewById(R.id.XButton1);
         XButton button2 = findViewById(R.id.XButton2);
         XButton button4 = findViewById(R.id.XButton4);
-        XGifButton gifText = findViewById(R.id.gifText);
+        XGifButton gifButton = findViewById(R.id.gifText);
+
+/*        gifButton.bindGifSource(R.drawable.like_bg_anim);
+        gifButton.bindBeforeTextColor(Color.parseColor("#ffffff"));
+        gifButton.bindAfterTextColor(Color.parseColor("#ff4c51"));
+
+        gifButton.setIsAnimComplete(false);
+
+        gifButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gifButton.getGifDrawable().addAnimationListener(loopNumber -> {
+                    gifButton.setIsAnimComplete(true);
+                    gifButton.setText(String.valueOf(Integer.parseInt(gifButton.getText().toString()) + 1));
+                });
+                gifButton.bindGifSource(R.drawable.like_bg_anim);
+
+            }
+        });*/
+
 
         try {
             XGifDrawable gifDrawable = new XGifDrawable(getResources(), R.drawable.like_bg_anim);
 
-            gifDrawable.seekToFrameAndGet(0);
             Drawable drawable = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(0));
-            gifText.setBackground(drawable);
-            gifText.setTextColor(Color.parseColor("#ffffff"));
+            gifButton.setBackground(drawable);
+            gifButton.setTextColor(Color.parseColor("#ffffff"));
 
-            gifText.setOnClickListener(v -> {
+            gifButton.setOnClickListener(v -> {
 
                 gifDrawable.addAnimationListener(loopNumber -> {
                     gifDrawable.stop();
                     Drawable drawable1 = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(gifDrawable.getNumberOfFrames() - 1));
-                    gifText.setBackground(drawable1);
-                    gifText.setTextColor(Color.parseColor("#ff4c51"));
-                    gifText.setText(String.valueOf(Integer.parseInt(gifText.getText().toString()) + 1));
-                    gifText.setClickable(false);
+                    gifButton.setBackground(drawable1);
+                    gifButton.setTextColor(Color.parseColor("#ff4c51"));
+                    gifButton.setText(String.valueOf(Integer.parseInt(gifButton.getText().toString()) + 1));
+                    gifButton.setClickable(false);
                 });
 
-                gifText.setBackground(gifDrawable);
+                gifButton.setBackground(gifDrawable);
             });
 
         } catch (IOException e) {
