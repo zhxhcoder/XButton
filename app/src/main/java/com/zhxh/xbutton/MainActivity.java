@@ -1,12 +1,17 @@
 package com.zhxh.xbutton;
 
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.zhxh.xbuttonlib.XButton;
 
+import pl.droidsonroids.gif.AnimationListener;
 import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifTextView;
 
@@ -23,8 +28,30 @@ public class MainActivity extends AppCompatActivity {
         GifTextView gifText = findViewById(R.id.gifText);
 
         gifText.setBackgroundResource(R.drawable.like_bg_anim);
-        gifText.setFreezesAnimation(true);
-        ((GifDrawable)gifText.getBackground()).setLoopCount(1);
+
+        GifDrawable gifDrawable = ((GifDrawable) gifText.getBackground());
+
+        gifDrawable.seekToFrameAndGet(0);
+        Drawable drawable = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(1));
+        gifText.setBackground(drawable);
+
+        gifDrawable.addAnimationListener(new AnimationListener() {
+            @Override
+            public void onAnimationCompleted(int loopNumber) {
+                Log.d("zhxhLog", "loopNumber " + loopNumber);
+                Drawable drawable = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(gifDrawable.getNumberOfFrames() - 1));
+                gifText.setBackground(drawable);
+                gifText.setClickable(false);
+            }
+        });
+        gifText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gifText.setBackgroundResource(R.drawable.like_bg_anim);
+                gifDrawable.setLoopCount(1);
+                gifDrawable.start();
+            }
+        });
 
 
         button1.setOnClickListener(v -> {

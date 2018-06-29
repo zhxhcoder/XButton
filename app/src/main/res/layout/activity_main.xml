@@ -107,7 +107,6 @@
         android:layout_width="55dp"
         android:layout_height="36dp"
         android:gravity="center_horizontal"
-        android:background="@drawable/like_bg_anim"
         android:paddingTop="22dp"
         android:text="dd"
         app:loopCount="0"
