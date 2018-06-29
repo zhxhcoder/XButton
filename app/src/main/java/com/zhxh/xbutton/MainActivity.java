@@ -1,17 +1,17 @@
 package com.zhxh.xbutton;
 
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import com.zhxh.xbuttonlib.XButton;
 
-import pl.droidsonroids.gif.AnimationListener;
+import java.io.IOException;
+
 import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifTextView;
 
@@ -27,31 +27,31 @@ public class MainActivity extends AppCompatActivity {
         XButton button4 = findViewById(R.id.XButton4);
         GifTextView gifText = findViewById(R.id.gifText);
 
-        gifText.setBackgroundResource(R.drawable.like_bg_anim);
+        try {
+            GifDrawable gifDrawable = new GifDrawable(getResources(), R.drawable.like_bg_anim);
 
-        GifDrawable gifDrawable = ((GifDrawable) gifText.getBackground());
+            gifDrawable.seekToFrameAndGet(0);
+            Drawable drawable = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(0));
+            gifText.setBackground(drawable);
+            gifText.setTextColor(Color.parseColor("#ffffff"));
 
-        gifDrawable.seekToFrameAndGet(0);
-        Drawable drawable = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(1));
-        gifText.setBackground(drawable);
+            gifText.setOnClickListener(v -> {
 
-        gifDrawable.addAnimationListener(new AnimationListener() {
-            @Override
-            public void onAnimationCompleted(int loopNumber) {
-                Log.d("zhxhLog", "loopNumber " + loopNumber);
-                Drawable drawable = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(gifDrawable.getNumberOfFrames() - 1));
-                gifText.setBackground(drawable);
-                gifText.setClickable(false);
-            }
-        });
-        gifText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gifText.setBackgroundResource(R.drawable.like_bg_anim);
-                gifDrawable.setLoopCount(1);
-                gifDrawable.start();
-            }
-        });
+                gifDrawable.addAnimationListener(loopNumber -> {
+                    gifDrawable.stop();
+                    Drawable drawable1 = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(gifDrawable.getNumberOfFrames() - 1));
+                    gifText.setBackground(drawable1);
+                    gifText.setTextColor(Color.parseColor("#ff4c51"));
+                    gifText.setText(String.valueOf(Integer.parseInt(gifText.getText().toString()) + 1));
+                    gifText.setClickable(false);
+                });
+
+                gifText.setBackground(gifDrawable);
+            });
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         button1.setOnClickListener(v -> {
