@@ -24,7 +24,6 @@ public final class XGifButton extends GifTextView {
 
     public XGifButton(Context context) {
         super(context);
-
         init(context);
     }
 
@@ -86,13 +85,13 @@ public final class XGifButton extends GifTextView {
         this.isAnimComplete = isAnimComplete;
 
         if (isAnimComplete) {
-            setLastFrame();
+            showLastFrame();
         } else {
-            setFirstFrame();
+            showFirstFrame();
         }
     }
 
-    public void setFirstFrame() {
+    public void showFirstFrame() {
         isAnimComplete = false;
         Drawable drawable = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(0));
         this.setBackground(drawable);
@@ -100,7 +99,7 @@ public final class XGifButton extends GifTextView {
         this.setTextColor(beforeTextColor);
     }
 
-    public void setLastFrame() {
+    public void showLastFrame() {
         isAnimComplete = true;
         gifDrawable.stop();
         Drawable drawable = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(gifDrawable.getNumberOfFrames() - 1));
@@ -108,6 +107,5 @@ public final class XGifButton extends GifTextView {
         this.setClickable(false);
         this.setTextColor(afterTextColor);
     }
-
 
 }
