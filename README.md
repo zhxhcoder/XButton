@@ -143,10 +143,53 @@ implementation 'com.zhxh:xbuttonlib:2.1'
 
 ~~~
 
+# 3.1版本加上了点击button动画效果
+  XGifButton 实现点击效果
+
+~~~
+    <com.zhxh.xbuttonlib.XGifButton
+        android:id="@+id/gifText"
+        android:layout_width="55dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginStart="128dp"
+        android:background="@drawable/like_bg_anim"
+        android:gravity="center_horizontal"
+        android:paddingTop="22dp"
+        android:text="200"
+        android:textColor="@android:color/white"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/XButton6" />
+~~~
+在代码中配置：
+~~~
+        gifButton.bindGifSource(R.drawable.like_bg_anim)
+                .bindBeforeTextColor(Color.parseColor("#ffffff"))
+                .bindAfterTextColor(Color.parseColor("#ff4c51"));
+
+        gifButton.setIsAnimComplete(false);
+
+        gifButton.setOnClickListener(v -> {
+
+            if (!gifButton.isAnimComplete()) {
+                gifButton.getGifDrawable().addAnimationListener(loopNumber -> {
+
+                    gifButton.setText(String.valueOf(Integer.parseInt(gifButton.getText().toString()) + 1));
+                    gifButton.setIsAnimComplete(true);
+                });
+
+                gifButton.bindGifSource(R.drawable.like_bg_anim);
+            }
+
+        });
+~~~
+
+
 # 下个版本计划
 
-1，上下滚动文字
-
+待续
 
 
 
