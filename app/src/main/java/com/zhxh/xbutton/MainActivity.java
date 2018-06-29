@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        try {
+/*        try {
             XGifDrawable gifDrawable = new XGifDrawable(getResources(), R.drawable.like_bg_anim);
 
             Drawable drawable = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(0));
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
         button1.setOnClickListener(v -> {
             Toast.makeText(this, "button1", Toast.LENGTH_LONG).show();
