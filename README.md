@@ -19,9 +19,8 @@
 ~~~
 
 ~~~
-compile 'com.zhxh:xbuttonlib:2.1'
-或
-implementation 'com.zhxh:xbuttonlib:2.1'
+    implementation 'com.zhxh:xbuttonlib:2.8'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.12'
 ~~~
 
 # 在项目中的使用
