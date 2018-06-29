@@ -21,7 +21,7 @@ import android.view.MotionEvent;
 /**
  * Created by zhxh on 2018/05/23
  */
-public class XButton extends AppCompatButton {
+public final class XButton extends AppCompatButton {
 
     GradientDrawable gradientDrawable;
 

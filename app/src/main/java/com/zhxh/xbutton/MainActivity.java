@@ -9,11 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.zhxh.xbuttonlib.XButton;
+import com.zhxh.xbuttonlib.XGifButton;
+import com.zhxh.xbuttonlib.XGifDrawable;
 
 import java.io.IOException;
 
-import pl.droidsonroids.gif.GifDrawable;
-import pl.droidsonroids.gif.GifTextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
         XButton button1 = findViewById(R.id.XButton1);
         XButton button2 = findViewById(R.id.XButton2);
         XButton button4 = findViewById(R.id.XButton4);
-        GifTextView gifText = findViewById(R.id.gifText);
+        XGifButton gifText = findViewById(R.id.gifText);
 
         try {
-            GifDrawable gifDrawable = new GifDrawable(getResources(), R.drawable.like_bg_anim);
+            XGifDrawable gifDrawable = new XGifDrawable(getResources(), R.drawable.like_bg_anim);
 
             gifDrawable.seekToFrameAndGet(0);
             Drawable drawable = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(0));
