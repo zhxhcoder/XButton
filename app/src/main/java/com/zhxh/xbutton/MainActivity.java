@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         button1.setOnClickListener(v -> {
             Toast.makeText(this, "button1", Toast.LENGTH_LONG).show();
             button1.setDefaultColor(0xffff0000);
