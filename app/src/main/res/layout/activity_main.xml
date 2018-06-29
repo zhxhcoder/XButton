@@ -62,9 +62,9 @@
         android:text="圆角矩形"
         android:textColor="@color/colorPrimary"
         app:XangleCorner="2dp"
+        app:XisShaderAnim="true"
         app:XstrokeColor="@color/colorPrimary"
         app:XstrokeWidth="1dp"
-        app:XisShaderAnim="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -102,5 +102,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <pl.droidsonroids.gif.GifTextView
+        android:id="@+id/gifText"
+        android:layout_width="55dp"
+        android:layout_height="36dp"
+        android:background="@drawable/like_bg_anim" />
 
 </android.support.constraint.ConstraintLayout>

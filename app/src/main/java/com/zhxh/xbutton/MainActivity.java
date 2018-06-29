@@ -7,6 +7,8 @@ import android.widget.Toast;
 
 import com.zhxh.xbuttonlib.XButton;
 
+import pl.droidsonroids.gif.GifTextView;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -17,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
         XButton button1 = findViewById(R.id.XButton1);
         XButton button2 = findViewById(R.id.XButton2);
         XButton button4 = findViewById(R.id.XButton4);
+        GifTextView gifText = findViewById(R.id.gifText);
+
+        gifText.setFreezesAnimation(true);
 
         button1.setOnClickListener(v -> {
             Toast.makeText(this, "button1", Toast.LENGTH_LONG).show();
