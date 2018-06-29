@@ -2,7 +2,6 @@ package com.zhxh.xbuttonlib;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -18,6 +17,8 @@ import pl.droidsonroids.gif.GifTextView;
  */
 public final class XGifButton extends GifTextView {
 
+    Context context;
+
     XGifDrawable gifDrawable;
     boolean isAnimComplete;
     int beforeTextColor;
@@ -25,26 +26,36 @@ public final class XGifButton extends GifTextView {
 
     public XGifButton(Context context) {
         super(context);
+
+        init(context);
     }
 
     public XGifButton(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(context);
     }
 
     public XGifButton(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        init(context);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public XGifButton(Context context, AttributeSet attrs, int defStyle, int defStyleRes) {
         super(context, attrs, defStyle, defStyleRes);
+        init(context);
+    }
+
+    private void init(Context context) {
+        this.context = context;
     }
 
 
     public XGifButton bindGifSource(int rGif) {
 
         try {
-            gifDrawable = new XGifDrawable(getResources(), rGif);
+            gifDrawable = new XGifDrawable(context.getResources(), rGif);
+            this.setBackground(gifDrawable);
             return this;
         } catch (IOException e) {
             e.printStackTrace();

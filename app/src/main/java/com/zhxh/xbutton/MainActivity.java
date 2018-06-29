@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
 
 import com.zhxh.xbuttonlib.XButton;
@@ -27,23 +28,22 @@ public class MainActivity extends AppCompatActivity {
         XButton button4 = findViewById(R.id.XButton4);
         XGifButton gifButton = findViewById(R.id.gifText);
 
-/*        gifButton.bindGifSource(R.drawable.like_bg_anim);
+        gifButton.bindGifSource(R.drawable.like_bg_anim);
         gifButton.bindBeforeTextColor(Color.parseColor("#ffffff"));
         gifButton.bindAfterTextColor(Color.parseColor("#ff4c51"));
 
         gifButton.setIsAnimComplete(false);
 
-        gifButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gifButton.getGifDrawable().addAnimationListener(loopNumber -> {
-                    gifButton.setIsAnimComplete(true);
-                    gifButton.setText(String.valueOf(Integer.parseInt(gifButton.getText().toString()) + 1));
-                });
-                gifButton.bindGifSource(R.drawable.like_bg_anim);
+        gifButton.setOnClickListener(v -> {
 
-            }
-        });*/
+            gifButton.getGifDrawable().addAnimationListener(loopNumber -> {
+                gifButton.setIsAnimComplete(true);
+                gifButton.setText(String.valueOf(Integer.parseInt(gifButton.getText().toString()) + 1));
+            });
+
+            gifButton.bindGifSource(R.drawable.like_bg_anim);
+
+        });
 
 
         try {
