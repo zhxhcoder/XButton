@@ -100,8 +100,8 @@ public final class XGifButton extends GifTextView {
     }
 
     public void showLastFrame() {
-        isAnimComplete = true;
         gifDrawable.stop();
+        isAnimComplete = true;
         Drawable drawable = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(gifDrawable.getNumberOfFrames() - 1));
         this.setBackground(drawable);
         this.setClickable(false);
