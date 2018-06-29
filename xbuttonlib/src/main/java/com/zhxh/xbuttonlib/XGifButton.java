@@ -44,8 +44,9 @@ public final class XGifButton extends GifTextView {
     public XGifButton bindGifSource(int rGif) {
 
         try {
-            gifDrawable = new XGifDrawable(context.getResources(), rGif);
-            gifDrawable.setLoopCount(1);
+            if (gifDrawable == null) {
+                gifDrawable = new XGifDrawable(context.getResources(), rGif);
+            }
             this.setBackground(gifDrawable);
             return this;
         } catch (IOException e) {
