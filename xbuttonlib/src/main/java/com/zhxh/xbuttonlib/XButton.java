@@ -25,10 +25,9 @@ public final class XButton extends AppCompatButton {
 
     GradientDrawable gradientDrawable;
 
-    private int pressedColor = Color.TRANSPARENT;
-    private int defaultColor = Color.TRANSPARENT;
     private int solidColor = Color.TRANSPARENT;
     private int strokeColor = Color.TRANSPARENT;
+    private int pressedColor = Color.TRANSPARENT;
 
     private int angleCorner = 0;
     private int strokeWidth = 0;
@@ -73,7 +72,7 @@ public final class XButton extends AppCompatButton {
     @SuppressLint("ClickableViewAccessibility")
     private void init(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.XButton);
-        defaultColor = a.getColor(R.styleable.XButton_XdefaultColor, defaultColor);
+        solidColor = a.getColor(R.styleable.XButton_XdefaultColor, solidColor);
         pressedColor = a.getColor(R.styleable.XButton_XpressedColor, pressedColor);
         solidColor = a.getColor(R.styleable.XButton_XsolidColor, solidColor);
         strokeColor = a.getColor(R.styleable.XButton_XstrokeColor, strokeColor);
@@ -222,7 +221,6 @@ public final class XButton extends AppCompatButton {
     //还原为默认
     public void reset() {
         pressedColor = Color.TRANSPARENT;
-        defaultColor = Color.TRANSPARENT;
         solidColor = Color.TRANSPARENT;
         strokeColor = Color.TRANSPARENT;
 
@@ -237,7 +235,7 @@ public final class XButton extends AppCompatButton {
 
     private void setBtnDrawable() {
         //设置按钮颜色
-        gradientDrawable.setColor(defaultColor);
+        gradientDrawable.setColor(solidColor);
         //设置按钮的边框宽度
         gradientDrawable.setStroke(strokeWidth, strokeColor);
         //设置按钮圆角大小
@@ -260,10 +258,10 @@ public final class XButton extends AppCompatButton {
                 gradientDrawable.setColor(pressedColor);
                 break;
             case MotionEvent.ACTION_UP:
-                gradientDrawable.setColor(defaultColor);
+                gradientDrawable.setColor(solidColor);
                 break;
             case MotionEvent.ACTION_CANCEL:
-                gradientDrawable.setColor(defaultColor);
+                gradientDrawable.setColor(solidColor);
                 break;
         }
 
@@ -294,12 +292,34 @@ public final class XButton extends AppCompatButton {
     }
 
     public void setDefaultColor(int defaultColor) {
-        this.defaultColor = defaultColor;
+        this.solidColor = defaultColor;
+        setBtnDrawable();
+    }
+
+    public void setSolidColor(int solidColor) {
+        this.solidColor = solidColor;
         setBtnDrawable();
     }
 
     public void setStrokeColor(int strokeColor) {
         this.strokeColor = strokeColor;
+        setBtnDrawable();
+    }
+
+
+    //实心的
+    public void setSolidAttr(int solidColor, int pressedColor, int angleCorner) {
+        this.solidColor = solidColor;
+        this.pressedColor = pressedColor;
+        this.angleCorner = angleCorner;
+        setBtnDrawable();
+    }
+
+    //空心的
+    public void setStrokeAttr(int strokeColor, int strokeWidth, int angleCorner) {
+        this.strokeColor = strokeColor;
+        this.strokeWidth = strokeWidth;
+        this.angleCorner = angleCorner;
         setBtnDrawable();
     }
 }
