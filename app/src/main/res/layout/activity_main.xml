@@ -80,6 +80,7 @@
         android:gravity="center"
         android:text="圆形"
         android:textColor="@color/colorPrimary"
+        app:XpressedTextColor="@android:color/white"
         app:XangleCorner="45dp"
         app:XstrokeColor="@color/colorPrimary"
         app:XpressedColor="@color/colorPrimaryDark"

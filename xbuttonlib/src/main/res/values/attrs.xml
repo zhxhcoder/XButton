@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="XButton">
         <attr name="XpressedColor" format="color" />
+        <attr name="XpressedTextColor" format="color" />
         <attr name="XsolidColor" format="color" />
         <attr name="XstrokeColor" format="color" />
         <attr name="XangleCorner" format="dimension" />

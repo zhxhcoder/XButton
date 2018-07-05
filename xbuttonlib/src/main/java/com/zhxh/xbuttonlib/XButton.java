@@ -29,9 +29,11 @@ public final class XButton extends AppCompatButton {
     private int solidColor = Color.TRANSPARENT;
     private int strokeColor = Color.TRANSPARENT;
     private int pressedColor = Color.TRANSPARENT;
+    private int pressedTextColor = Color.TRANSPARENT;
     private int angleCorner = 0;
     private int strokeWidth = 0;
 
+    private int defaultTextColor;
 
     private int drawableWidth;
     private DrawablePosition position;
@@ -75,12 +77,16 @@ public final class XButton extends AppCompatButton {
     private void init(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.XButton);
         pressedColor = a.getColor(R.styleable.XButton_XpressedColor, pressedColor);
+        pressedTextColor = a.getColor(R.styleable.XButton_XpressedTextColor, pressedTextColor);
         solidColor = a.getColor(R.styleable.XButton_XsolidColor, solidColor);
         strokeColor = a.getColor(R.styleable.XButton_XstrokeColor, strokeColor);
         angleCorner = a.getDimensionPixelSize(R.styleable.XButton_XangleCorner, angleCorner);
         strokeWidth = a.getDimensionPixelSize(R.styleable.XButton_XstrokeWidth, strokeWidth);
         drawablePadding = a.getDimensionPixelSize(R.styleable.XButton_XdrawablePadding, drawablePadding);
         XisShaderAnim = a.getBoolean(R.styleable.XButton_XisShaderAnim, XisShaderAnim);
+
+
+        defaultTextColor = this.getCurrentTextColor();
 
         if (null == bounds) {
             bounds = new Rect();
@@ -228,6 +234,7 @@ public final class XButton extends AppCompatButton {
         angleCorner = 0;
         strokeWidth = 0;
     }
+
     //除去Angle还原为默认
     public void resetExAngle() {
         pressedColor = Color.TRANSPARENT;
@@ -265,12 +272,15 @@ public final class XButton extends AppCompatButton {
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 gradientDrawable.setColor(pressedColor);
+                this.setTextColor(pressedTextColor);
                 break;
             case MotionEvent.ACTION_UP:
                 gradientDrawable.setColor(solidColor);
+                this.setTextColor(defaultTextColor);
                 break;
             case MotionEvent.ACTION_CANCEL:
                 gradientDrawable.setColor(solidColor);
+                this.setTextColor(defaultTextColor);
                 break;
         }
 
