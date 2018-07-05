@@ -72,7 +72,6 @@ public final class XButton extends AppCompatButton {
     @SuppressLint("ClickableViewAccessibility")
     private void init(Context context, AttributeSet attrs) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.XButton);
-        solidColor = a.getColor(R.styleable.XButton_XdefaultColor, solidColor);
         pressedColor = a.getColor(R.styleable.XButton_XpressedColor, pressedColor);
         solidColor = a.getColor(R.styleable.XButton_XsolidColor, solidColor);
         strokeColor = a.getColor(R.styleable.XButton_XstrokeColor, strokeColor);

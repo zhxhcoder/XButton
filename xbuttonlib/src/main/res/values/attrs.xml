@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="XButton">
-        <attr name="XdefaultColor" format="color" />
         <attr name="XpressedColor" format="color" />
         <attr name="XsolidColor" format="color" />
         <attr name="XstrokeColor" format="color" />
