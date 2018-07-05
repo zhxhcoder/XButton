@@ -25,12 +25,14 @@ public final class XButton extends AppCompatButton {
 
     GradientDrawable gradientDrawable;
 
+    //关键属性设置
     private int solidColor = Color.TRANSPARENT;
     private int strokeColor = Color.TRANSPARENT;
     private int pressedColor = Color.TRANSPARENT;
-
     private int angleCorner = 0;
     private int strokeWidth = 0;
+
+
     private int drawableWidth;
     private DrawablePosition position;
 
@@ -225,7 +227,14 @@ public final class XButton extends AppCompatButton {
 
         angleCorner = 0;
         strokeWidth = 0;
-        setBtnDrawable();
+    }
+    //除去Angle还原为默认
+    public void resetExAngle() {
+        pressedColor = Color.TRANSPARENT;
+        solidColor = Color.TRANSPARENT;
+        strokeColor = Color.TRANSPARENT;
+
+        strokeWidth = 0;
     }
 
     public void setDrawablePadding(int padding) {
@@ -287,51 +296,57 @@ public final class XButton extends AppCompatButton {
 
     //对外定义接口
     public void setPressedColor(int pressedColor) {
-        this.pressedColor = pressedColor;
-        setBtnDrawable();
+        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
     }
 
     public void setSolidColor(int solidColor) {
-        this.solidColor = solidColor;
-        setBtnDrawable();
+        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
     }
 
     public void setStrokeColor(int strokeColor) {
-        this.strokeColor = strokeColor;
-        setBtnDrawable();
+        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
     }
 
+    public void setBtnAttr(int solidColor, int strokeColor, int pressedColor, int angleCorner, int strokeWidth) {
+        this.solidColor = solidColor;
+        this.strokeColor = strokeColor;
+        this.pressedColor = pressedColor;
+        this.angleCorner = angleCorner;
+        this.strokeWidth = strokeWidth;
+        setBtnDrawable();
+    }
 
     //实心的
     public void setSolidAttr(int solidColor, int pressedColor, int angleCorner) {
-        this.solidColor = solidColor;
-        this.pressedColor = pressedColor;
-        this.angleCorner = angleCorner;
-        setBtnDrawable();
+        resetExAngle();
+        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
     }
 
     public void setSolidAttr(int solidColor, int angleCorner) {
-        setSolidAttr(solidColor, solidColor, angleCorner);
+        resetExAngle();
+        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
     }
 
     public void setSolidAttr(int solidColor) {
-        setSolidAttr(solidColor, solidColor, angleCorner);
+        resetExAngle();
+        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
     }
 
     //空心的
     public void setStrokeAttr(int strokeColor, int pressedColor, int strokeWidth, int angleCorner) {
-        this.strokeColor = strokeColor;
-        this.pressedColor = pressedColor;
-        this.strokeWidth = strokeWidth;
-        this.angleCorner = angleCorner;
-        setBtnDrawable();
+        resetExAngle();
+        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
     }
 
     public void setStrokeAttr(int strokeColor, int strokeWidth, int angleCorner) {
-        setStrokeAttr(strokeColor, strokeColor, strokeWidth, angleCorner);
+        resetExAngle();
+        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
     }
 
     public void setStrokeAttr(int strokeColor, int strokeWidth) {
-        setStrokeAttr(strokeColor, strokeColor, strokeWidth, angleCorner);
+        resetExAngle();
+        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
     }
+
+
 }

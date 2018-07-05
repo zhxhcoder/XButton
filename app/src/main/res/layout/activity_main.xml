@@ -15,6 +15,9 @@
         android:textColor="@android:color/white"
         app:XangleCorner="45dp"
         app:XsolidColor="@color/colorPrimary"
+        app:XpressedColor="@color/colorPrimaryDark"
+        app:XstrokeColor="@color/colorAccent"
+        app:XstrokeWidth="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
