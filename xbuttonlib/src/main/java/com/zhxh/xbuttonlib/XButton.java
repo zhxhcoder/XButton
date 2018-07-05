@@ -290,12 +290,6 @@ public final class XButton extends AppCompatButton {
         this.pressedColor = pressedColor;
         setBtnDrawable();
     }
-
-    public void setDefaultColor(int defaultColor) {
-        this.solidColor = defaultColor;
-        setBtnDrawable();
-    }
-
     public void setSolidColor(int solidColor) {
         this.solidColor = solidColor;
         setBtnDrawable();
@@ -315,11 +309,21 @@ public final class XButton extends AppCompatButton {
         setBtnDrawable();
     }
 
+    public void setSolidAttr(int solidColor, int angleCorner) {
+        setSolidAttr(solidColor, solidColor, angleCorner);
+    }
+
     //空心的
-    public void setStrokeAttr(int strokeColor, int strokeWidth, int angleCorner) {
+    public void setStrokeAttr(int strokeColor, int pressedColor, int strokeWidth, int angleCorner) {
         this.strokeColor = strokeColor;
+        this.pressedColor = pressedColor;
         this.strokeWidth = strokeWidth;
         this.angleCorner = angleCorner;
         setBtnDrawable();
+    }
+
+    //空心的
+    public void setStrokeAttr(int strokeColor, int strokeWidth, int angleCorner) {
+        setStrokeAttr(strokeColor, strokeColor, strokeWidth, angleCorner);
     }
 }

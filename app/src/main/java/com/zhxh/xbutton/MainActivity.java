@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         button1.setOnClickListener(v -> {
             Toast.makeText(this, "button1", Toast.LENGTH_LONG).show();
-            button1.setDefaultColor(0xffff0000);
+            button1.setSolidColor(0xffff0000);
         });
         button2.setOnClickListener(v -> Toast.makeText(this, "button2", Toast.LENGTH_LONG).show());
 
