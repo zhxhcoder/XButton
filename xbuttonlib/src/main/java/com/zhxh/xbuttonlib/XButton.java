@@ -225,6 +225,7 @@ public final class XButton extends AppCompatButton {
 
         angleCorner = 0;
         strokeWidth = 0;
+        setBtnDrawable();
     }
 
     public void setDrawablePadding(int padding) {
@@ -250,7 +251,7 @@ public final class XButton extends AppCompatButton {
         isTouchPass = false;
     }
 
-    //处理按下去的颜色
+    //处理按下去的颜色 区分solid和stroke模式
     public boolean setColor(int action) {
         switch (action) {
             case MotionEvent.ACTION_DOWN:
@@ -289,6 +290,7 @@ public final class XButton extends AppCompatButton {
         this.pressedColor = pressedColor;
         setBtnDrawable();
     }
+
     public void setSolidColor(int solidColor) {
         this.solidColor = solidColor;
         setBtnDrawable();
@@ -312,6 +314,10 @@ public final class XButton extends AppCompatButton {
         setSolidAttr(solidColor, solidColor, angleCorner);
     }
 
+    public void setSolidAttr(int solidColor) {
+        setSolidAttr(solidColor, solidColor, angleCorner);
+    }
+
     //空心的
     public void setStrokeAttr(int strokeColor, int pressedColor, int strokeWidth, int angleCorner) {
         this.strokeColor = strokeColor;
@@ -321,8 +327,11 @@ public final class XButton extends AppCompatButton {
         setBtnDrawable();
     }
 
-    //空心的
     public void setStrokeAttr(int strokeColor, int strokeWidth, int angleCorner) {
+        setStrokeAttr(strokeColor, strokeColor, strokeWidth, angleCorner);
+    }
+
+    public void setStrokeAttr(int strokeColor, int strokeWidth) {
         setStrokeAttr(strokeColor, strokeColor, strokeWidth, angleCorner);
     }
 }
