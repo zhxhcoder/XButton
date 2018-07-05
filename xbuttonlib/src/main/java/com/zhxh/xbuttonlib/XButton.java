@@ -85,8 +85,11 @@ public final class XButton extends AppCompatButton {
         drawablePadding = a.getDimensionPixelSize(R.styleable.XButton_XdrawablePadding, drawablePadding);
         XisShaderAnim = a.getBoolean(R.styleable.XButton_XisShaderAnim, XisShaderAnim);
 
-
         defaultTextColor = this.getCurrentTextColor();
+
+        if (pressedTextColor == Color.TRANSPARENT) {
+            pressedTextColor = defaultTextColor;
+        }
 
         if (null == bounds) {
             bounds = new Rect();
