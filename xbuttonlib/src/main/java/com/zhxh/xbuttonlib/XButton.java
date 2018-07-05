@@ -219,6 +219,17 @@ public final class XButton extends AppCompatButton {
         requestLayout();
     }
 
+    //还原为默认
+    public void reset() {
+        pressedColor = Color.TRANSPARENT;
+        defaultColor = Color.TRANSPARENT;
+        solidColor = Color.TRANSPARENT;
+        strokeColor = Color.TRANSPARENT;
+
+        angleCorner = 0;
+        strokeWidth = 0;
+    }
+
     public void setDrawablePadding(int padding) {
         drawablePadding = padding;
         requestLayout();
