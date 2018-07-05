@@ -142,7 +142,7 @@
 
 ~~~
 
-# 3.1版本加上了点击button动画效果
+# 2.8版本加上了点击button动画效果
   XGifButton 实现点击效果
 
 ~~~
@@ -185,6 +185,67 @@
         });
 ~~~
 
+# 2.8版本删除了defaultColor 并添加了 pressTextColor 以及方便地从 solid型到stroke型button的相互转换
+
+~~~
+        button1.setOnClickListener(v -> {
+            Toast.makeText(this, "button1", Toast.LENGTH_LONG).show();
+            button1.setStrokeAttr(0xffff0000, 2);
+        });
+
+~~~
+
+~~~
+    <com.zhxh.xbuttonlib.XButton
+        android:id="@+id/XButton5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="276dp"
+        android:gravity="center"
+        android:text="圆形"
+        android:textColor="@color/colorPrimary"
+        app:XangleCorner="45dp"
+        app:XpressedColor="@color/colorPrimaryDark"
+        app:XpressedTextColor="@android:color/white"
+        app:XstrokeColor="@color/colorPrimary"
+        app:XstrokeWidth="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+~~~
+
+~~~
+        android:textColor="@color/colorPrimary"
+
+        app:XpressedColor="@color/colorPrimaryDark"
+
+~~~
+
+代码实现
+
+~~~
+    //处理按下去的颜色 区分solid和stroke模式
+    public boolean setColor(int action) {
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                gradientDrawable.setColor(pressedColor);
+                this.setTextColor(pressedTextColor);
+                break;
+            case MotionEvent.ACTION_UP:
+                gradientDrawable.setColor(solidColor);
+                this.setTextColor(defaultTextColor);
+                break;
+            case MotionEvent.ACTION_CANCEL:
+                gradientDrawable.setColor(solidColor);
+                this.setTextColor(defaultTextColor);
+                break;
+        }
+
+        return isTouchPass;
+    }
+
+~~~
 
 # 下个版本计划
 

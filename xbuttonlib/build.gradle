@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 6
-        versionName "2.8"
+        versionCode 7
+        versionName "3.1"
     }
 
     buildTypes {
@@ -69,7 +69,7 @@ def gitUrl = 'https://github.com/zhxhcoder/XButton.git'   //github仓库的地�
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
-version = "2.8"//version
+version = "3.1"//version
 group = "com.zhxh"//groupId
 bintray {
     user = properties.getProperty("bintray.user")
@@ -84,10 +84,10 @@ bintray {
         publish = true // 是否是公开项目。
 
         version {
-            name = '2.8'//版本号
+            name = '3.1'//版本号
             desc = 'A extent Button with more customized feature'//版本描述
             released = new Date()
-            vcsTag = 'v2.8'
+            vcsTag = 'v3.1'
             attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
