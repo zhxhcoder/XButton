@@ -1,5 +1,6 @@
 package com.zhxh.xbutton;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-
         /* try {
             XGifDrawable gifDrawable = new XGifDrawable(getResources(), R.drawable.like_bg_anim);
 
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        button2.setOnClickListener(v -> Toast.makeText(this, "button2", Toast.LENGTH_LONG).show());
+        button2.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,TabActivity.class)));
 
 
         final Handler handler = new Handler();
