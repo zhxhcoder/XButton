@@ -221,6 +221,10 @@ public final class XButton extends AppCompatButton {
         strokeWidth = 0;
     }
 
+    public boolean isAnimComplete() {
+        return isAnimComplete;
+    }
+
     public void setIsAnimComplete(boolean isAnimComplete) {
 
         this.isAnimComplete = isAnimComplete;
