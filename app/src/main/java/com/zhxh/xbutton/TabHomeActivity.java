@@ -15,7 +15,7 @@ import com.zhxh.xbutton.dummy.ChartData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabActivity extends AppCompatActivity implements ItemFragment.OnListFragmentInteractionListener {
+public class TabHomeActivity extends AppCompatActivity implements ItemFragment.OnListFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide

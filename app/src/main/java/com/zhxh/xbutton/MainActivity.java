@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        button2.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,TabActivity.class)));
+        button2.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,TabHomeActivity.class)));
 
 
         final Handler handler = new Handler();
