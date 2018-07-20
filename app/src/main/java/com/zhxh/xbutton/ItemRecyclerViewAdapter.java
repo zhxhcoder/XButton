@@ -1,6 +1,7 @@
 package com.zhxh.xbutton;
 
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zhxh.xbutton.dummy.ChartData;
+import com.zhxh.xbuttonlib.XButton;
 import com.zhxh.xbuttonlib.XGifButton;
 import com.zhxh.xchartlib.LineChart;
 
@@ -53,9 +55,10 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
 
 
         holder.xgifBtn.setVisibility(View.VISIBLE);
-        holder.xgifBtn.bindGifSource(R.drawable.like_bg_anim)
-                .bindBeforeTextColor(Color.parseColor("#ffffff"))
-                .bindAfterTextColor(Color.parseColor("#ff4c51"));
+        holder.xgifBtn.setAnimDrawable(R.drawable.like_bg_start, R.drawable.like_bg_end, () -> {
+            holder.xgifBtn.setTextColor(Color.parseColor("#FF4C51"));
+            holder.xgifBtn.setText(holder.xgifBtn.getText().toString()+"后");
+        });
 
         holder.xgifBtn.setText("12");
 
@@ -64,15 +67,7 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
 
         holder.xgifBtn.setOnClickListener(v -> {
 
-
             if (!holder.xgifBtn.isAnimComplete()) {
-                holder.xgifBtn.getGifDrawable().addAnimationListener(loopNumber -> {
-
-
-                    holder.xgifBtn.setIsAnimComplete(true);
-                });
-
-                holder.xgifBtn.bindGifSource(R.drawable.like_bg_anim);
 
             }
             holder.xgifBtn.setClickable(false);
@@ -90,7 +85,7 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
         public final View mView;
         public final TextView content;
         public final LineChart lineChart;
-        public final XGifButton xgifBtn;
+        public final XButton xgifBtn;
         public ChartData mItem;
 
         public ViewHolder(View view) {
@@ -98,7 +93,7 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
             mView = view;
             content = (TextView) view.findViewById(R.id.content);
             lineChart = (LineChart) view.findViewById(R.id.lineChart);
-            xgifBtn = (XGifButton) view.findViewById(R.id.xgifBtn);
+            xgifBtn = (XButton) view.findViewById(R.id.xgifBtn);
         }
 
         @Override
