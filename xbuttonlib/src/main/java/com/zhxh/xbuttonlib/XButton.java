@@ -51,12 +51,12 @@ public final class XButton extends AppCompatButton {
 
     //动画
     boolean isClickAnim;
-    boolean isClickAnimFinished;
+    boolean isAnimFinished;
 
-    private int animatedValue;
+    private float animatedValue;
     private int drawableStart;
     private int drawableEnd;
-    private final int clickAnimNum = 20;
+    private final float clickAnimTime = 500;
     ClickAnimAction clickAnimAction;
 
     public XButton(Context context) {
@@ -105,7 +105,7 @@ public final class XButton extends AppCompatButton {
         //设置按钮点击之后的颜色更换
         setOnTouchListener((arg0, event) -> {
             if (isClickAnim) {
-                return setColor(event.getAction());
+                return false;
             }
             setBackgroundDrawable(gradientDrawable);
             return setColor(event.getAction());
@@ -129,16 +129,23 @@ public final class XButton extends AppCompatButton {
         }
 
 
-        ValueAnimator animator = ValueAnimator.ofInt(0, clickAnimNum);
-        animator.setDuration(400);
+        ValueAnimator animator = ValueAnimator.ofFloat(0, clickAnimTime);
+        animator.setDuration((long) clickAnimTime);
         animator.addUpdateListener(animation -> {
 
-            animatedValue = (int) animation.getAnimatedValue();
+            animatedValue = (float) animation.getAnimatedValue();
 
-            if (animatedValue == clickAnimNum) {
-                isClickAnimFinished = true;
-                clickAnimAction.onAnimFinished();
+            if (animatedValue < clickAnimTime / 2) {
+                float startAlpha = (clickAnimTime / 2 - animatedValue) / (clickAnimTime / 2);
+                XButton.this.setBackgroundResource(drawableStart);
+                XButton.this.setAlpha(startAlpha);
+            } else if (animatedValue < clickAnimTime) {
+                float endAlpha = (animatedValue - clickAnimTime / 2) / (clickAnimTime / 2);
+                XButton.this.setAlpha(endAlpha);
                 XButton.this.setBackgroundResource(drawableEnd);
+            } else if (animatedValue == clickAnimTime) {
+                isAnimFinished = true;
+                clickAnimAction.onAnimFinished();
                 this.setClickable(false);
             }
 
@@ -280,7 +287,7 @@ public final class XButton extends AppCompatButton {
         super.onDraw(canvas);
 
         if (isClickAnim) {
-            if (isClickAnimFinished) {
+            if (isAnimFinished) {
                 this.setBackgroundResource(drawableEnd);
                 this.setClickable(false);
             }
