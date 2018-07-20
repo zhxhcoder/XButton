@@ -56,6 +56,8 @@ public final class XButton extends AppCompatButton {
     private int animatedValue;
     private int drawableStart;
     private int drawableEnd;
+    private final int clickAnimNum = 20;
+    ClickAnimAction clickAnimAction;
 
     public XButton(Context context) {
         this(context, null);
@@ -102,6 +104,9 @@ public final class XButton extends AppCompatButton {
 
         //设置按钮点击之后的颜色更换
         setOnTouchListener((arg0, event) -> {
+            if (isClickAnim) {
+                return setColor(event.getAction());
+            }
             setBackgroundDrawable(gradientDrawable);
             return setColor(event.getAction());
         });
@@ -115,38 +120,33 @@ public final class XButton extends AppCompatButton {
         return super.performClick();
     }
 
-    private void setAnim(boolean XisShaderAnim) {
+    private void setAnim(boolean isClickAnim) {
 
-        this.isClickAnim = XisShaderAnim;
+        this.isClickAnim = isClickAnim;
 
-        if (!XisShaderAnim) {
+        if (!isClickAnim) {
             return;
         }
 
-        postInvalidate();
 
-        ValueAnimator animator = ValueAnimator.ofInt(0, 20);
+        ValueAnimator animator = ValueAnimator.ofInt(0, clickAnimNum);
         animator.setDuration(1000);
         animator.addUpdateListener(animation -> {
 
-            isClickAnimFinished = false;
-
             animatedValue = (int) animation.getAnimatedValue();
-            if (animatedValue == 0) {
-                XButton.this.setBackgroundResource(drawableStart);
-            }
 
-            if (animatedValue == 20) {
+            if (animatedValue == clickAnimNum) {
                 isClickAnimFinished = true;
+                clickAnimAction.onAnimFinished();
                 XButton.this.setBackgroundResource(drawableEnd);
+                this.setClickable(false);
             }
 
-            invalidate();
         });
 
         animator.start();
+        postInvalidate();
 
-        requestLayout();
     }
 
     @Override
@@ -214,10 +214,11 @@ public final class XButton extends AppCompatButton {
         strokeWidth = 0;
     }
 
-    public void setAnimDrawable(int drawableStart, int drawableEnd) {
+    public void setAnimDrawable(int drawableStart, int drawableEnd, ClickAnimAction clickAnimAction) {
         this.isClickAnim = true;
         this.drawableStart = drawableStart;
         this.drawableEnd = drawableEnd;
+        this.clickAnimAction = clickAnimAction;
         this.setClickable(true);
         this.setBackgroundResource(drawableStart);
     }
@@ -338,6 +339,11 @@ public final class XButton extends AppCompatButton {
     public void setStrokeAttr(int strokeColor, int strokeWidth) {
         resetExAngle();
         setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
+    }
+
+
+    public interface ClickAnimAction {
+        void onAnimFinished();
     }
 
 
