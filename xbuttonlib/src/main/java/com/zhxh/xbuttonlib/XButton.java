@@ -6,14 +6,13 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 
@@ -50,14 +49,13 @@ public final class XButton extends AppCompatButton {
 
     boolean isTouchPass = true;
 
-
     //动画
-    boolean XisShaderAnim;
+    boolean isClickAnim;
+    boolean isClickAnimFinished;
 
     private int animatedValue;
-    private int colorEnd;
-    private int colorStart;
-    private int animatedValue1;
+    private int drawableStart;
+    private int drawableEnd;
 
     public XButton(Context context) {
         this(context, null);
@@ -83,7 +81,6 @@ public final class XButton extends AppCompatButton {
         angleCorner = a.getDimensionPixelSize(R.styleable.XButton_XangleCorner, angleCorner);
         strokeWidth = a.getDimensionPixelSize(R.styleable.XButton_XstrokeWidth, strokeWidth);
         drawablePadding = a.getDimensionPixelSize(R.styleable.XButton_XdrawablePadding, drawablePadding);
-        XisShaderAnim = a.getBoolean(R.styleable.XButton_XisShaderAnim, XisShaderAnim);
 
         defaultTextColor = this.getCurrentTextColor();
 
@@ -102,18 +99,25 @@ public final class XButton extends AppCompatButton {
         setDrawablePadding(drawablePadding);
         setBtnDrawable();
 
-        setAnim(XisShaderAnim);
 
         //设置按钮点击之后的颜色更换
         setOnTouchListener((arg0, event) -> {
             setBackgroundDrawable(gradientDrawable);
             return setColor(event.getAction());
         });
+
+    }
+
+    @Override
+    public boolean performClick() {
+        Log.d("performClick", "isClickAnim " + isClickAnim);
+        setAnim(isClickAnim);
+        return super.performClick();
     }
 
     private void setAnim(boolean XisShaderAnim) {
 
-        this.XisShaderAnim = XisShaderAnim;
+        this.isClickAnim = XisShaderAnim;
 
         if (!XisShaderAnim) {
             return;
@@ -121,54 +125,26 @@ public final class XButton extends AppCompatButton {
 
         postInvalidate();
 
-        ValueAnimator animator1 = ValueAnimator.ofInt(0, 255);
-        animator1.setDuration(10000);
-        animator1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                animatedValue = (int) animation.getAnimatedValue();
+        ValueAnimator animator = ValueAnimator.ofInt(0, 20);
+        animator.setDuration(1000);
+        animator.addUpdateListener(animation -> {
 
-                if ((animatedValue < 255)) {
-                    colorStart = Color.rgb(255, animatedValue, 255 - animatedValue);
-                    colorEnd = Color.rgb(animatedValue, 0, 255 - animatedValue);
+            isClickAnimFinished = false;
 
-                } else if (animatedValue == 255) {
-                    ValueAnimator animator2 = ValueAnimator.ofInt(0, 255);
-                    animator2.setDuration(2500);
-                    animator2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                        @Override
-                        public void onAnimationUpdate(ValueAnimator animation) {
-                            animatedValue1 = (int) animation.getAnimatedValue();
-                            colorStart = Color.rgb(255 - animatedValue1, 255 - animatedValue1, animatedValue1);
-                            colorEnd = Color.rgb(255, 0, animatedValue1);
-
-                            if (animatedValue1 == 255) {
-                                ValueAnimator animator3 = ValueAnimator.ofInt(0, 255);
-                                animator3.setDuration(2500);
-                                animator3.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                                    @Override
-                                    public void onAnimationUpdate(ValueAnimator animation) {
-                                        int animatedValue2 = (int) animation.getAnimatedValue();
-                                        colorStart = Color.rgb(animatedValue2, 0, 255);
-                                        colorEnd = Color.rgb(255 - animatedValue2, 0, 255);
-                                        invalidate();
-
-                                    }
-                                });
-                                animator3.start();
-                            }
-
-                            invalidate();
-                        }
-                    });
-                    animator2.start();
-                }
-
-                invalidate();
+            animatedValue = (int) animation.getAnimatedValue();
+            if (animatedValue == 0) {
+                XButton.this.setBackgroundResource(drawableStart);
             }
+
+            if (animatedValue == 20) {
+                isClickAnimFinished = true;
+                XButton.this.setBackgroundResource(drawableEnd);
+            }
+
+            invalidate();
         });
 
-        animator1.start();
+        animator.start();
 
         requestLayout();
     }
@@ -238,6 +214,14 @@ public final class XButton extends AppCompatButton {
         strokeWidth = 0;
     }
 
+    public void setAnimDrawable(int drawableStart, int drawableEnd) {
+        this.isClickAnim = true;
+        this.drawableStart = drawableStart;
+        this.drawableEnd = drawableEnd;
+        this.setClickable(true);
+        this.setBackgroundResource(drawableStart);
+    }
+
     //除去Angle还原为默认
     public void resetExAngle() {
         pressedColor = Color.TRANSPARENT;
@@ -294,17 +278,12 @@ public final class XButton extends AppCompatButton {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        if (!XisShaderAnim) {
-            return;
+        if (isClickAnim) {
+            if (isClickAnimFinished) {
+                this.setBackgroundResource(drawableEnd);
+                this.setClickable(false);
+            }
         }
-
-        int width = getWidth();
-        int height = getHeight();
-        Paint paint = new Paint();
-        LinearGradient backGradient = new LinearGradient(width, 0, 0, 0, new int[]{colorStart, colorEnd}, new float[]{0, 1f}, Shader.TileMode.CLAMP);
-        paint.setShader(backGradient);
-        canvas.drawRect(0, 0, width, height, paint);
-
     }
 
     //对外定义接口

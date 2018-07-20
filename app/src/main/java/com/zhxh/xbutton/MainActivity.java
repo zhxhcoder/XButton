@@ -3,8 +3,8 @@ package com.zhxh.xbutton;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
 
 import com.zhxh.xbuttonlib.XButton;
@@ -76,18 +76,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        button2.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,TabHomeActivity.class)));
+        button2.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TabHomeActivity.class)));
 
+        button4.setAnimDrawable(R.drawable.like_bg_start, R.drawable.like_bg_end);
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+        button4.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                button4.requestLayout();
-                button4.invalidate();
-                handler.postDelayed(this, 15000);
+            public void onClick(View v) {
+
+
             }
-        }, 15000);
+        });
 
     }
 }

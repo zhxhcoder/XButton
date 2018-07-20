@@ -1,5 +1,6 @@
 package com.zhxh.xbutton;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zhxh.xbutton.dummy.ChartData;
+import com.zhxh.xbuttonlib.XGifButton;
 import com.zhxh.xchartlib.LineChart;
 
 import java.util.List;
@@ -30,6 +32,8 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
+        ChartData itemData = mValues.get(position);
+
         holder.mItem = mValues.get(position);
         holder.content.setText(mValues.get(position).getName());
         holder.lineChart.bindData(mValues.get(position).getList());
@@ -46,6 +50,35 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
                 }
             }
         });
+
+
+        holder.xgifBtn.setVisibility(View.VISIBLE);
+        holder.xgifBtn.bindGifSource(R.drawable.like_bg_anim)
+                .bindBeforeTextColor(Color.parseColor("#ffffff"))
+                .bindAfterTextColor(Color.parseColor("#ff4c51"));
+
+        holder.xgifBtn.setText("12");
+
+        holder.xgifBtn.setIsAnimComplete(false);
+        holder.xgifBtn.setClickable(true);
+
+        holder.xgifBtn.setOnClickListener(v -> {
+
+
+            if (!holder.xgifBtn.isAnimComplete()) {
+                holder.xgifBtn.getGifDrawable().addAnimationListener(loopNumber -> {
+
+
+                    holder.xgifBtn.setIsAnimComplete(true);
+                });
+
+                holder.xgifBtn.bindGifSource(R.drawable.like_bg_anim);
+
+            }
+            holder.xgifBtn.setClickable(false);
+
+        });
+
     }
 
     @Override
@@ -57,6 +90,7 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
         public final View mView;
         public final TextView content;
         public final LineChart lineChart;
+        public final XGifButton xgifBtn;
         public ChartData mItem;
 
         public ViewHolder(View view) {
@@ -64,6 +98,7 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
             mView = view;
             content = (TextView) view.findViewById(R.id.content);
             lineChart = (LineChart) view.findViewById(R.id.lineChart);
+            xgifBtn = (XGifButton) view.findViewById(R.id.xgifBtn);
         }
 
         @Override
