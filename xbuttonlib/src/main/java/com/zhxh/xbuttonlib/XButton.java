@@ -51,7 +51,7 @@ public final class XButton extends AppCompatButton {
 
     //动画
     boolean isClickAnim;
-    boolean isAnimFinished;
+    boolean isAnimComplete;
 
     private float animatedValue;
     private int drawableStart;
@@ -144,7 +144,7 @@ public final class XButton extends AppCompatButton {
                 XButton.this.setAlpha(endAlpha);
                 XButton.this.setBackgroundResource(drawableEnd);
             } else if (animatedValue == clickAnimTime) {
-                isAnimFinished = true;
+                isAnimComplete = true;
                 clickAnimAction.onAnimFinished();
                 this.setClickable(false);
             }
@@ -221,6 +221,19 @@ public final class XButton extends AppCompatButton {
         strokeWidth = 0;
     }
 
+    public void setIsAnimComplete(boolean isAnimComplete) {
+
+        this.isAnimComplete = isAnimComplete;
+
+        if (isAnimComplete) {
+            this.setClickable(false);
+            this.setBackgroundResource(drawableEnd);
+        } else {
+            this.setClickable(true);
+            this.setBackgroundResource(drawableStart);
+        }
+    }
+
     public void setAnimDrawable(int drawableStart, int drawableEnd, ClickAnimAction clickAnimAction) {
         this.isClickAnim = true;
         this.drawableStart = drawableStart;
@@ -287,7 +300,7 @@ public final class XButton extends AppCompatButton {
         super.onDraw(canvas);
 
         if (isClickAnim) {
-            if (isAnimFinished) {
+            if (isAnimComplete) {
                 this.setBackgroundResource(drawableEnd);
                 this.setClickable(false);
             }
