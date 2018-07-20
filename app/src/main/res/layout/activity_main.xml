@@ -59,7 +59,7 @@
         android:paddingTop="22dp"
         android:text="200"
         android:textColor="@android:color/white"
-        app:XpressedTextColor="@android:color/white"
+        app:XpressedTextColor="@color/C12"
         android:textSize="10sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

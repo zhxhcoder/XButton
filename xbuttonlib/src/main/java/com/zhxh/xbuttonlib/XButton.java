@@ -130,7 +130,7 @@ public final class XButton extends AppCompatButton {
 
 
         ValueAnimator animator = ValueAnimator.ofInt(0, clickAnimNum);
-        animator.setDuration(1000);
+        animator.setDuration(400);
         animator.addUpdateListener(animation -> {
 
             animatedValue = (int) animation.getAnimatedValue();
