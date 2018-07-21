@@ -22,27 +22,8 @@ public class MainActivity extends AppCompatActivity {
         XButton button1 = findViewById(R.id.XButton1);
         XButton button2 = findViewById(R.id.XButton2);
         XButton button4 = findViewById(R.id.XButton4);
-        XGifButton gifButton = findViewById(R.id.gifText);
 
-        gifButton.bindGifSource(R.drawable.like_bg_anim)
-                .bindBeforeTextColor(Color.parseColor("#ffffff"))
-                .bindAfterTextColor(Color.parseColor("#ff4c51"));
 
-        gifButton.setIsAnimComplete(false);
-
-        gifButton.setOnClickListener(v -> {
-
-            if (!gifButton.isAnimComplete()) {
-                gifButton.getGifDrawable().addAnimationListener(loopNumber -> {
-
-                    gifButton.setText(String.valueOf(Integer.parseInt(gifButton.getText().toString()) + 1));
-                    gifButton.setIsAnimComplete(true);
-                });
-
-                gifButton.bindGifSource(R.drawable.like_bg_anim);
-            }
-
-        });
 
         /* try {
             XGifDrawable gifDrawable = new XGifDrawable(getResources(), R.drawable.like_bg_anim);
