@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.zhxh.xbutton.dummy.ChartData;
 import com.zhxh.xbuttonlib.XButton;
-import com.zhxh.xbuttonlib.XGifButton;
 import com.zhxh.xchartlib.LineChart;
 
 import java.util.List;
