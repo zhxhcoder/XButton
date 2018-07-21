@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.zhxh.xbuttonlib.XButton;
-import com.zhxh.xbuttonlib.XGifButton;
 
 
 public class MainActivity extends AppCompatActivity {
