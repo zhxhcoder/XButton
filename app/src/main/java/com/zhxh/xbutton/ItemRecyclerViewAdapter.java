@@ -53,10 +53,11 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
         });
 
 
+
         holder.xgifBtn.setVisibility(View.VISIBLE);
         holder.xgifBtn.setAnimDrawable(R.drawable.like_bg_start, R.drawable.like_bg_end, () -> {
             holder.xgifBtn.setTextColor(Color.parseColor("#FF4C51"));
-            holder.xgifBtn.setText(holder.xgifBtn.getText().toString()+"后");
+            holder.xgifBtn.setText(new StringBuilder().append(holder.xgifBtn.getText().toString()).append("后").toString());
         });
 
         holder.xgifBtn.setText("12");
