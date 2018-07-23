@@ -18,7 +18,12 @@ public class DummyContent {
         ITEMS = new Gson().fromJson(testResult, new TypeToken<List<ChartData>>() {
         }.getType());
 
-        return ITEMS;
 
+        for (int i=0;i<ITEMS.size();i++){
+            if (i%2==0) {
+                ITEMS.get(i).setFollow(true);
+            }
+          }
+        return ITEMS;
     }
 }

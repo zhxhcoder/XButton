@@ -20,6 +20,15 @@ public class ChartData implements IAxisValue {
     @SerializedName(value = "list", alternate = {"DayInitsAsstes"})
     private List<ChartData> list;
 
+    private  boolean isFollow;
+
+    public boolean isFollow() {
+        return isFollow;
+    }
+
+    public void setFollow(boolean follow) {
+        isFollow = follow;
+    }
 
     public ChartData(String date, String value) {
         this.date = date;

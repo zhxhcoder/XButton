@@ -62,8 +62,15 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
 
         holder.xgifBtn.setText("12");
 
-        holder.xgifBtn.setIsAnimComplete(false);
-        holder.xgifBtn.setClickable(true);
+
+        if (itemData.isFollow()) {
+            holder.xgifBtn.setIsAnimComplete(true);
+            holder.xgifBtn.setClickable(false);
+        } else {
+            holder.xgifBtn.setIsAnimComplete(false);
+            holder.xgifBtn.setClickable(true);
+        }
+
 
         holder.xgifBtn.setOnClickListener(v -> {
 
