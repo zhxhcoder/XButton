@@ -29,6 +29,7 @@ public final class XButton extends AppCompatButton {
     private int strokeColor = Color.TRANSPARENT;
     private int pressedColor = Color.TRANSPARENT;
     private int pressedTextColor = Color.TRANSPARENT;
+    private int clickTextColor = Color.TRANSPARENT;
     private int angleCorner = 0;
     private int strokeWidth = 0;
 
@@ -78,6 +79,7 @@ public final class XButton extends AppCompatButton {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.XButton);
         pressedColor = a.getColor(R.styleable.XButton_XpressedColor, pressedColor);
         pressedTextColor = a.getColor(R.styleable.XButton_XpressedTextColor, pressedTextColor);
+        clickTextColor = a.getColor(R.styleable.XButton_XclickTextColor, clickTextColor);
         solidColor = a.getColor(R.styleable.XButton_XsolidColor, solidColor);
         strokeColor = a.getColor(R.styleable.XButton_XstrokeColor, strokeColor);
         angleCorner = a.getDimensionPixelSize(R.styleable.XButton_XangleCorner, angleCorner);
@@ -88,6 +90,9 @@ public final class XButton extends AppCompatButton {
 
         if (pressedTextColor == Color.TRANSPARENT) {
             pressedTextColor = defaultTextColor;
+        }
+        if (clickTextColor == Color.TRANSPARENT) {
+            clickTextColor = defaultTextColor;
         }
 
         if (null == bounds) {
@@ -116,6 +121,7 @@ public final class XButton extends AppCompatButton {
     @Override
     public boolean performClick() {
         Log.d("performClick", "isClickAnim " + isClickAnim);
+        this.setTextColor(clickTextColor);
         setAnim(isClickAnim);
         return super.performClick();
     }
@@ -230,9 +236,11 @@ public final class XButton extends AppCompatButton {
         this.isAnimComplete = isAnimComplete;
 
         if (isAnimComplete) {
+            this.setTextColor(clickTextColor);
             this.setClickable(false);
             this.setBackgroundResource(drawableEnd);
         } else {
+            this.setTextColor(defaultTextColor);
             this.setClickable(true);
             this.setBackgroundResource(drawableStart);
         }
@@ -246,6 +254,7 @@ public final class XButton extends AppCompatButton {
         this.setClickable(true);
         this.setBackgroundResource(drawableStart);
     }
+
 
     //除去Angle还原为默认
     public void resetExAngle() {

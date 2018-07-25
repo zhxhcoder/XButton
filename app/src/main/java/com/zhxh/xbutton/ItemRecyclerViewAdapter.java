@@ -1,7 +1,5 @@
 package com.zhxh.xbutton;
 
-import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,33 +50,24 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
             }
         });
 
-
-
         holder.xgifBtn.setVisibility(View.VISIBLE);
         holder.xgifBtn.setAnimDrawable(R.drawable.like_bg_start, R.drawable.like_bg_end, () -> {
-            holder.xgifBtn.setTextColor(Color.parseColor("#FF4C51"));
             holder.xgifBtn.setText(new StringBuilder().append(holder.xgifBtn.getText().toString()).append("后").toString());
         });
 
-        holder.xgifBtn.setText("12");
-
-
         if (itemData.isFollow()) {
             holder.xgifBtn.setIsAnimComplete(true);
-            holder.xgifBtn.setClickable(false);
+            holder.xgifBtn.setText("12后");
         } else {
             holder.xgifBtn.setIsAnimComplete(false);
-            holder.xgifBtn.setClickable(true);
+            holder.xgifBtn.setText("12");
         }
-
 
         holder.xgifBtn.setOnClickListener(v -> {
 
             if (!holder.xgifBtn.isAnimComplete()) {
 
             }
-            holder.xgifBtn.setClickable(false);
-
         });
 
     }
