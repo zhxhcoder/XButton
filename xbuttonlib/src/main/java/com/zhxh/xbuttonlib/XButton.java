@@ -12,7 +12,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 
@@ -120,7 +119,9 @@ public final class XButton extends AppCompatButton {
 
     @Override
     public boolean performClick() {
-        Log.d("performClick", "isClickAnim " + isClickAnim);
+        if (BtnUtils.isQuickClick()) {
+            return true;
+        }
         this.setTextColor(clickTextColor);
         setAnim(isClickAnim);
         return super.performClick();
