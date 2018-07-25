@@ -1,5 +1,6 @@
 package com.zhxh.xbutton;
 
+import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
 
     private final List<ChartData> mValues;
     private final ItemFragment.OnListFragmentInteractionListener mListener;
+
+    private Handler handler = new Handler();
 
     public ItemRecyclerViewAdapter(List<ChartData> items, ItemFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
@@ -51,6 +54,7 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
         });
 
         holder.xgifBtn.setVisibility(View.VISIBLE);
+        holder.xgifBtn.setTextColorAnimEnd(0xffFF4C51);
         holder.xgifBtn.setAnimDrawable(R.drawable.like_bg_start, R.drawable.like_bg_end, () -> {
             holder.xgifBtn.setText(new StringBuilder().append(holder.xgifBtn.getText().toString()).append("后").toString());
         });
@@ -66,7 +70,7 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
         holder.xgifBtn.setOnClickListener(v -> {
 
             if (!holder.xgifBtn.isAnimComplete()) {
-
+                holder.xgifBtn.startAnim();
             }
         });
 

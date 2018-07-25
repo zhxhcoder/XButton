@@ -29,6 +29,7 @@ public final class XButton extends AppCompatButton {
     private int pressedColor = Color.TRANSPARENT;
     private int pressedTextColor = Color.TRANSPARENT;
     private int clickTextColor = Color.TRANSPARENT;
+    private int textColorAnimEnd = Color.TRANSPARENT;
     private int angleCorner = 0;
     private int strokeWidth = 0;
 
@@ -56,7 +57,7 @@ public final class XButton extends AppCompatButton {
     private float animatedValue;
     private int drawableStart;
     private int drawableEnd;
-    private final float clickAnimTime = 500;
+    private float clickAnimTime = 500;
     ClickAnimAction clickAnimAction;
 
     public XButton(Context context) {
@@ -93,6 +94,9 @@ public final class XButton extends AppCompatButton {
         if (clickTextColor == Color.TRANSPARENT) {
             clickTextColor = defaultTextColor;
         }
+        if (textColorAnimEnd == Color.TRANSPARENT) {
+            textColorAnimEnd = defaultTextColor;
+        }
 
         if (null == bounds) {
             bounds = new Rect();
@@ -104,7 +108,6 @@ public final class XButton extends AppCompatButton {
         setGravity(Gravity.CENTER);
         setDrawablePadding(drawablePadding);
         setBtnDrawable();
-
 
         //设置按钮点击之后的颜色更换
         setOnTouchListener((arg0, event) -> {
@@ -122,16 +125,12 @@ public final class XButton extends AppCompatButton {
         if (BtnUtils.isQuickClick()) {
             return true;
         }
-        this.setTextColor(clickTextColor);
-        setAnim(isClickAnim);
         return super.performClick();
     }
 
-    private void setAnim(boolean isClickAnim) {
+    public void startAnim() {
 
-        this.isClickAnim = isClickAnim;
-
-        if (!isClickAnim) {
+        if (clickAnimAction == null) {
             return;
         }
 
@@ -152,6 +151,7 @@ public final class XButton extends AppCompatButton {
                 XButton.this.setBackgroundResource(drawableEnd);
             } else if (animatedValue == clickAnimTime) {
                 isAnimComplete = true;
+                this.setTextColor(textColorAnimEnd);
                 clickAnimAction.onAnimFinished();
                 this.setClickable(false);
             }
@@ -160,7 +160,10 @@ public final class XButton extends AppCompatButton {
 
         animator.start();
         postInvalidate();
+    }
 
+    public void setClickAnimTime(float clickAnimTime) {
+        this.clickAnimTime = clickAnimTime;
     }
 
     @Override
@@ -232,12 +235,13 @@ public final class XButton extends AppCompatButton {
         return isAnimComplete;
     }
 
+
     public void setIsAnimComplete(boolean isAnimComplete) {
 
         this.isAnimComplete = isAnimComplete;
 
         if (isAnimComplete) {
-            this.setTextColor(clickTextColor);
+            this.setTextColor(textColorAnimEnd);
             this.setClickable(false);
             this.setBackgroundResource(drawableEnd);
         } else {
@@ -252,10 +256,11 @@ public final class XButton extends AppCompatButton {
         this.drawableStart = drawableStart;
         this.drawableEnd = drawableEnd;
         this.clickAnimAction = clickAnimAction;
-        this.setClickable(true);
-        this.setBackgroundResource(drawableStart);
     }
 
+    public void setTextColorAnimEnd(int textColorAnimEnd) {
+        this.textColorAnimEnd = textColorAnimEnd;
+    }
 
     //除去Angle还原为默认
     public void resetExAngle() {
