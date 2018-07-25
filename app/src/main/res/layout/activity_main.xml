@@ -103,20 +103,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.zhxh.xbuttonlib.XGifButton
-        android:id="@+id/gifText"
-        android:layout_width="55dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="48dp"
-        android:layout_marginLeft="128dp"
-        android:layout_marginStart="128dp"
-        android:background="@drawable/like_bg_anim"
-        android:gravity="center_horizontal"
-        android:paddingTop="22dp"
-        android:text="200"
-        android:textColor="@android:color/white"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/XButton6" />
-
 </android.support.constraint.ConstraintLayout>
