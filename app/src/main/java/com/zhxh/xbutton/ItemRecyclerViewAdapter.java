@@ -65,6 +65,9 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
         }
 
         holder.xgifBtn.setOnClickListener(v -> {
+            //无论是否点赞成功都先运行动画，然后根据接口请求结果展现，
+            //请求结果出来时，先不更新数据或状态，等动画运行完再更新
+            //动画运行完时，接口还未返回，=这时就要展现
 
             if (!holder.xgifBtn.isAnimComplete()) {
                 holder.xgifBtn.startAnim();
