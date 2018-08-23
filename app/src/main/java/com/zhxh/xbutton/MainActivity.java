@@ -1,8 +1,6 @@
 package com.zhxh.xbutton;
 
-import android.app.Application;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -22,33 +20,6 @@ public class MainActivity extends AppCompatActivity {
         XButton button1 = findViewById(R.id.XButton1);
         XButton button2 = findViewById(R.id.XButton2);
         XButton button4 = findViewById(R.id.XButton4);
-
-
-
-        /* try {
-            XGifDrawable gifDrawable = new XGifDrawable(getResources(), R.drawable.like_bg_anim);
-
-            Drawable drawable = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(0));
-            gifButton.setBackground(drawable);
-            gifButton.setTextColor(Color.parseColor("#ffffff"));
-
-            gifButton.setOnClickListener(v -> {
-
-                gifDrawable.addAnimationListener(loopNumber -> {
-                    gifDrawable.stop();
-                    Drawable drawable1 = new BitmapDrawable(getResources(), gifDrawable.seekToFrameAndGet(gifDrawable.getNumberOfFrames() - 1));
-                    gifButton.setBackground(drawable1);
-                    gifButton.setTextColor(Color.parseColor("#ff4c51"));
-                    gifButton.setText(String.valueOf(Integer.parseInt(gifButton.getText().toString()) + 1));
-                    gifButton.setClickable(false);
-                });
-
-                gifButton.setBackground(gifDrawable);
-            });
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
 
         button1.setOnClickListener(v -> {
             Toast.makeText(this, "button1", Toast.LENGTH_LONG).show();

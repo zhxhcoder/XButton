@@ -23,7 +23,7 @@
     <com.zhxh.xbuttonlib.XButton
         android:id="@+id/XButton2"
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:layout_marginTop="68dp"
         android:gravity="center"
         android:text="圆形"
@@ -31,6 +31,8 @@
         app:XangleCorner="45dp"
         app:XpressedColor="@color/colorPrimaryDark"
         app:XsolidColor="@color/colorPrimary"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -59,8 +61,8 @@
         android:paddingTop="22dp"
         android:text="200"
         android:textColor="@android:color/white"
-        app:XpressedTextColor="@color/C12"
         android:textSize="10sp"
+        app:XpressedTextColor="@color/C12"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/XButton3" />
@@ -102,5 +104,6 @@
         app:XsolidColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>
