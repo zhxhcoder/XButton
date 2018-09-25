@@ -328,21 +328,26 @@ public final class XButton extends AppCompatButton {
 
     //对外定义接口
     public void setPressedColor(int pressedColor) {
-        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
+        setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
+    }
+
+    public void setPressedTextColor(int pressedTextColor) {
+        setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
     public void setSolidColor(int solidColor) {
-        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
+        setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
     public void setStrokeColor(int strokeColor) {
-        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
+        setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
-    public void setBtnAttr(int solidColor, int strokeColor, int pressedColor, int angleCorner, int strokeWidth) {
+    public void setBtnAttr(int solidColor, int strokeColor, int pressedColor, int pressedTextColor, int angleCorner, int strokeWidth) {
         this.solidColor = solidColor;
         this.strokeColor = strokeColor;
         this.pressedColor = pressedColor;
+        this.pressedTextColor = pressedTextColor;
         this.angleCorner = angleCorner;
         this.strokeWidth = strokeWidth;
         setBtnDrawable();
@@ -351,33 +356,33 @@ public final class XButton extends AppCompatButton {
     //实心的
     public void setSolidAttr(int solidColor, int pressedColor, int angleCorner) {
         resetExAngle();
-        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
+        setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
     public void setSolidAttr(int solidColor, int angleCorner) {
         resetExAngle();
-        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
+        setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
     public void setSolidAttr(int solidColor) {
         resetExAngle();
-        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
+        setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
     //空心的
     public void setStrokeAttr(int strokeColor, int pressedColor, int strokeWidth, int angleCorner) {
         resetExAngle();
-        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
+        setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
     public void setStrokeAttr(int strokeColor, int strokeWidth, int angleCorner) {
         resetExAngle();
-        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
+        setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
     public void setStrokeAttr(int strokeColor, int strokeWidth) {
         resetExAngle();
-        setBtnAttr(solidColor, strokeColor, pressedColor, angleCorner, strokeWidth);
+        setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
 
