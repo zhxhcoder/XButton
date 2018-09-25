@@ -13,7 +13,7 @@
 <dependency>
   <groupId>com.zhxh</groupId>
   <artifactId>xbuttonlib</artifactId>
-  <version>2.1</version>
+  <version>3.5</version>
   <type>pom</type>
 </dependency>
 ~~~
@@ -21,6 +21,11 @@
 ~~~
     implementation 'com.zhxh:xbuttonlib:2.8'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.12'
+~~~
+
+在3.0之后不在支持gif图
+~~~
+    implementation 'com.zhxh:xbuttonlib:3.5'
 ~~~
 
 # 在项目中的使用
@@ -246,6 +251,10 @@
     }
 
 ~~~
+
+## 3.5版本更新
+
+从3.0版本开始，就删除了gif图片背景，如果使用可以用2.x版本
 
 # 下个版本计划
 
