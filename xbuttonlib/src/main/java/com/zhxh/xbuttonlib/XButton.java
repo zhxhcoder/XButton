@@ -331,6 +331,23 @@ public final class XButton extends AppCompatButton {
         setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
+    @Override
+    public void setTextColor(int color) {
+        super.setTextColor(color);
+
+        defaultTextColor = color;
+
+        if (pressedTextColor == Color.TRANSPARENT) {
+            pressedTextColor = defaultTextColor;
+        }
+        if (clickTextColor == Color.TRANSPARENT) {
+            clickTextColor = defaultTextColor;
+        }
+        if (textColorAnimEnd == Color.TRANSPARENT) {
+            textColorAnimEnd = defaultTextColor;
+        }
+    }
+
     public void setPressedTextColor(int pressedTextColor) {
         setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }

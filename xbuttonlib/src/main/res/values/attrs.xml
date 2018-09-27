@@ -6,6 +6,8 @@
         <attr name="XclickTextColor" format="color" />
         <attr name="XsolidColor" format="color" />
         <attr name="XstrokeColor" format="color" />
+        <attr name="XstartColor" format="color" />
+        <attr name="XendColor" format="color" />
         <attr name="XangleCorner" format="dimension" />
         <attr name="XstrokeWidth" format="dimension" />
         <attr name="XdrawablePadding" format="dimension" />
