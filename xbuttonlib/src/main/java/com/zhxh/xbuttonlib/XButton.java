@@ -98,6 +98,13 @@ public final class XButton extends AppCompatButton {
             textColorAnimEnd = defaultTextColor;
         }
 
+
+        if (pressedColor == Color.TRANSPARENT) {
+            if (solidColor != Color.TRANSPARENT) {
+                pressedColor = solidColor;
+            }
+        }
+
         if (null == bounds) {
             bounds = new Rect();
         }

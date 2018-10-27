@@ -29,7 +29,6 @@
         android:text="圆形"
         android:textColor="@android:color/white"
         app:XangleCorner="45dp"
-        app:XpressedColor="@color/colorPrimaryDark"
         app:XsolidColor="@color/colorPrimary"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintHorizontal_bias="0.3"
