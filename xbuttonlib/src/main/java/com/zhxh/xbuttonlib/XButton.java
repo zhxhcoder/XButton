@@ -353,10 +353,14 @@ public final class XButton extends AppCompatButton {
     }
 
     public void setSolidColor(int solidColor) {
+
+        pressedColor = solidColor;
         setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
     public void setStrokeColor(int strokeColor) {
+        pressedColor = strokeColor;
+
         setBtnAttr(solidColor, strokeColor, pressedColor, pressedTextColor, angleCorner, strokeWidth);
     }
 
