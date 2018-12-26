@@ -342,6 +342,8 @@ public final class XButton extends AppCompatButton {
     public void setTextColor(int color) {
         super.setTextColor(color);
 
+        defaultTextColor = color;
+
         if (pressedTextColor == Color.TRANSPARENT) {
             pressedTextColor = defaultTextColor;
         }
