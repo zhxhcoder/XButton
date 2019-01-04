@@ -55,4 +55,9 @@ public class MainActivity extends AppCompatActivity {
     public void onPostTest(PostTestEvent event) {
         postText.append("*" + event.getTestMsg());
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onPostStickyTest(PostTestEvent event) {
+        postText.append("#" + event.getTestMsg());
+    }
 }
