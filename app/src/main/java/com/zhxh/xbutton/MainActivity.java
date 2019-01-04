@@ -33,7 +33,10 @@ public class MainActivity extends AppCompatActivity {
             button1.setSolidColor(0xffff0000);
         });
 
-        button2.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TabHomeActivity.class)));
+        button2.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, TabHomeActivity.class));
+            startActivity(new Intent(MainActivity.this, PostActivity.class));
+        });
 
         button4.setAnimDrawable(R.drawable.like_bg_start, R.drawable.like_bg_end, () -> {
             button4.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.C12));
@@ -45,9 +48,12 @@ public class MainActivity extends AppCompatActivity {
         XButton btnUnRegister = findViewById(R.id.btnUnRegister);
         postText = findViewById(R.id.postText);
 
-        btnRegister.setOnClickListener(v -> EventBus.getDefault().register(MainActivity.this));
+        btnRegister.setOnClickListener(v -> {
+            //不能重复订阅
+            EventBus.getDefault().register(MainActivity.this);
+        });
 
-        btnUnRegister.setOnClickListener(v -> EventBus.getDefault().register(MainActivity.this));
+        btnUnRegister.setOnClickListener(v -> EventBus.getDefault().unregister(MainActivity.this));
 
     }
 
