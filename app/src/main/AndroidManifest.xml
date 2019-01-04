@@ -18,7 +18,8 @@
         </activity>
         <activity
             android:name=".TabHomeActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".PostActivity"></activity>
     </application>
 
 </manifest>
