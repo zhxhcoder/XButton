@@ -4,12 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zhxh.xbutton.dummy.PostTestEvent;
 import com.zhxh.xbuttonlib.XButton;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 
 public class MainActivity extends AppCompatActivity {
+    TextView postText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
             button1.setSolidColor(0xffff0000);
         });
 
-
         button2.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TabHomeActivity.class)));
 
         button4.setAnimDrawable(R.drawable.like_bg_start, R.drawable.like_bg_end, () -> {
@@ -37,10 +43,16 @@ public class MainActivity extends AppCompatActivity {
 
         XButton btnRegister = findViewById(R.id.btnRegister);
         XButton btnUnRegister = findViewById(R.id.btnUnRegister);
+        postText = findViewById(R.id.postText);
 
+        btnRegister.setOnClickListener(v -> EventBus.getDefault().register(MainActivity.this));
 
+        btnUnRegister.setOnClickListener(v -> EventBus.getDefault().register(MainActivity.this));
 
+    }
 
-
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onPostTest(PostTestEvent event) {
+        postText.append("*" + event.getTestMsg());
     }
 }

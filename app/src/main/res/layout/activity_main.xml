@@ -68,24 +68,6 @@
 
 
     <com.zhxh.xbuttonlib.XButton
-        android:id="@+id/XButton5"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="276dp"
-        android:gravity="center"
-        android:text="圆形"
-        android:textColor="@color/colorPrimary"
-        app:XangleCorner="45dp"
-        app:XpressedColor="@color/colorPrimaryDark"
-        app:XpressedTextColor="@android:color/white"
-        app:XstrokeColor="@color/colorPrimary"
-        app:XstrokeWidth="1dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.zhxh.xbuttonlib.XButton
         android:id="@+id/XButton6"
         android:layout_width="322dp"
         android:layout_height="51dp"
@@ -134,6 +116,15 @@
         app:XsolidColor="@color/colorPrimary"
         app:layout_constraintLeft_toRightOf="@+id/btnRegister"
         app:layout_constraintTop_toTopOf="@+id/btnRegister" />
+
+    <TextView
+        android:id="@+id/postText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:text="圆形"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
 
 
 </android.support.constraint.ConstraintLayout>
