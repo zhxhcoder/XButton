@@ -1,37 +1,33 @@
-# XButton
-[XButton取代各种shape文件](https://www.jianshu.com/p/40887388770e)
 
-参考文章 https://www.jianshu.com/p/40887388770e
+# XButton介绍
+[XButton取代各种shape文件](https://www.jianshu.com/p/40887388770e)，因为大家项目中基本都是用到的button都不需要变化大小，所以写了个简单的[XButton]
 
-参考图片
+参考效果
 
 ![](https://github.com/zhxhcoder/XButton/blob/master/screenshots/xbutton.gif)
 
-通过Maven或Gradle引用
+## 0.控件源码
+先上代码：https://github.com/zhxhcoder/XButton
+参考我的上篇文章：https://www.jianshu.com/p/c8f8818a7baf
 
+## 1. 引用方法
+
+通过Maven或Gradle引用
 ~~~
 <dependency>
   <groupId>com.zhxh</groupId>
   <artifactId>xbuttonlib</artifactId>
-  <version>3.5</version>
+  <version>3.9</version>
   <type>pom</type>
 </dependency>
 ~~~
 
 ~~~
-    implementation 'com.zhxh:xbuttonlib:2.8'
-    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.12'
+implementation 'com.zhxh:xbuttonlib:3.9'
 ~~~
-
-在3.0之后不在支持gif图
+## 2. 使用方法
 ~~~
-    implementation 'com.zhxh:xbuttonlib:3.5'
-~~~
-
-# 在项目中的使用
-
-~~~
-    <com.zhxh.xbuttonlib.XButton
+    <com.zhxh.android.xbuttonlib.XButton
         android:id="@+id/XButton4"
         android:layout_width="100dp"
         android:layout_height="40dp"
@@ -55,7 +51,7 @@
 ~~~
 
 ~~~
-    <com.zhxh.xbuttonlib.XButton
+    <com.zhxh.android.xbuttonlib.XButton
         android:id="@+id/XButton5"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -79,7 +75,9 @@
         app:XstrokeWidth="1dp"               //表示边框宽度
 ~~~
 
-# 1.3版本加上了可以代码控制的功能
+## 3. 版本变更
+
+##### V1.3版本加上了可以代码控制的功能
 
 比如
 ~~~
@@ -104,7 +102,7 @@
             button1.setDefaultColor(0xffff0000);
 ~~~
 
-# 1.4版本加上了自定义的XdrawablePadding属性
+##### V1.4版本加上了自定义的XdrawablePadding属性
 
 原生的android:drawablePadding这个属性在 我们给view设置的宽度或者高度足够小（以至于将两者挤压在一起）的时候，这个属性才会起作用，也即在图片和文字之间会有间距产生。如果你的view所设置的宽度或者高度大于drawableLeft/drawableRight或者drawableTop/drawableBottom所产生的间距，那么这个属性当然也就不会起作用。
 
@@ -140,57 +138,14 @@
         app:XdrawablePadding="10dp"
 ~~~
 
-# 2.1版本加上了动画设置
+##### V2.1版本加上了动画设置
 
 ~~~
         app:XisShaderAnim="true"
 
 ~~~
 
-# 2.8版本加上了点击button动画效果
-  XGifButton 实现点击效果
-
-~~~
-    <com.zhxh.xbuttonlib.XGifButton
-        android:id="@+id/gifText"
-        android:layout_width="55dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="48dp"
-        android:layout_marginLeft="128dp"
-        android:layout_marginStart="128dp"
-        android:background="@drawable/like_bg_anim"
-        android:gravity="center_horizontal"
-        android:paddingTop="22dp"
-        android:text="200"
-        android:textColor="@android:color/white"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/XButton6" />
-~~~
-在代码中配置：
-~~~
-        gifButton.bindGifSource(R.drawable.like_bg_anim)
-                .bindBeforeTextColor(Color.parseColor("#ffffff"))
-                .bindAfterTextColor(Color.parseColor("#ff4c51"));
-
-        gifButton.setIsAnimComplete(false);
-
-        gifButton.setOnClickListener(v -> {
-
-            if (!gifButton.isAnimComplete()) {
-                gifButton.getGifDrawable().addAnimationListener(loopNumber -> {
-
-                    gifButton.setText(String.valueOf(Integer.parseInt(gifButton.getText().toString()) + 1));
-                    gifButton.setIsAnimComplete(true);
-                });
-
-                gifButton.bindGifSource(R.drawable.like_bg_anim);
-            }
-
-        });
-~~~
-
-# 2.8版本删除了defaultColor 并添加了 pressTextColor 以及方便地从 solid型到stroke型button的相互转换
+##### V2.8版本删除了defaultColor 并添加了 pressTextColor 以及方便地从 solid型到stroke型button的相互转换
 
 ~~~
         button1.setOnClickListener(v -> {
@@ -252,24 +207,134 @@
 
 ~~~
 
-## 3.5版本更新
+## 4. 关键代码分析
 
-从3.0版本开始，就删除了gif图片背景，如果使用可以用2.x版本
+```
+    GradientDrawable gradientDrawable;
+```
 
-# 下个版本计划
+GradientDrawable可以在res/drawable目录下以xml文件用<shape>标签来定义。看看官方文档给出的xml定义说明吧。
+```
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape=["rectangle" | "oval" | "line" | "ring"] >
+    <corners
+        android:radius="integer"
+        android:topLeftRadius="integer"
+        android:topRightRadius="integer"
+        android:bottomLeftRadius="integer"
+        android:bottomRightRadius="integer" />
+    <gradient
+        android:angle="integer"
+        android:centerX="integer"
+        android:centerY="integer"
+        android:centerColor="integer"
+        android:endColor="color"
+        android:gradientRadius="integer"
+        android:startColor="color"
+        android:type=["linear" | "radial" | "sweep"]
+        android:useLevel=["true" | "false"] />
+    <padding
+        android:left="integer"
+        android:top="integer"
+        android:right="integer"
+        android:bottom="integer" />
+    <size
+        android:width="integer"
+        android:height="integer" />
+    <solid
+        android:color="color" />
+    <stroke
+        android:width="integer"
+        android:color="color"
+        android:dashWidth="integer"
+        android:dashGap="integer" />
+</shape>
 
-待续
+```
+```
+    private void setBtnDrawable() {
+        //设置按钮颜色
+        gradientDrawable.setColor(solidColor);
+        //设置按钮的边框宽度
+        gradientDrawable.setStroke(strokeWidth, strokeColor);
+        //设置按钮圆角大小
+        gradientDrawable.setCornerRadius(angleCorner);
+        setBackgroundDrawable(gradientDrawable);
+        ...
+    }
+
+```
+自定义GradientDrawable,并根据属性自定义，以取代shape文件
 
 
 
+原生的android:drawablePadding这个属性在 我们给view设置的宽度或者高度足够小（以至于将两者挤压在一起）的时候，这个属性才会起作用，也即在图片和文字之间会有间距产生。如果你的view所设置的宽度或者高度大于drawableLeft/drawableRight或者drawableTop/drawableBottom所产生的间距，那么这个属性当然也就不会起作用。
+
+可以通过自定义View来精确的计算：
+
+我们先自定义属性drawablePadding来设置间距，并提供方法给外部调用
+重写**setCompoundDrawablesWithIntrinsicBounds()**方法来获取我们设置的drawable宽度。
+最后重写**onLayout**方法，因为这里面改变了一些位置属性，需要通过重新布局才能起作用。
+
+```
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+
+        Paint textPaint = getPaint();
+        String text = getText().toString();
+        textPaint.getTextBounds(text, 0, text.length(), bounds);
+
+        int textWidth = bounds.width();
+        int factor = (position == DrawablePosition.LEFT_AND_RIGHT) ? 2 : 1;
+        int contentWidth = drawableWidth + drawablePadding * factor + textWidth;
+        int horizontalPadding = (int) ((getWidth() / 2.0) - (contentWidth / 2.0));
+
+        setCompoundDrawablePadding(-horizontalPadding + drawablePadding);
+
+        switch (position) {
+            case LEFT:
+                setPadding(horizontalPadding, getPaddingTop(), 0, getPaddingBottom());
+                break;
+
+            case RIGHT:
+                setPadding(0, getPaddingTop(), horizontalPadding, getPaddingBottom());
+                break;
+
+            case LEFT_AND_RIGHT:
+                setPadding(horizontalPadding, getPaddingTop(), horizontalPadding, getPaddingBottom());
+                break;
+
+            default:
+                setPadding(0, getPaddingTop(), 0, getPaddingBottom());
+        }
+    }
 
 
+    //重新设置位置
+    @Override
+    public void setCompoundDrawablesWithIntrinsicBounds(Drawable left, Drawable top, Drawable right, Drawable bottom) {
+        super.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom);
 
+        if (left != null && right != null) {
+            drawableWidth = left.getIntrinsicWidth() + right.getIntrinsicWidth();
+            position = DrawablePosition.LEFT_AND_RIGHT;
+        } else if (left != null) {
+            drawableWidth = left.getIntrinsicWidth();
+            position = DrawablePosition.LEFT;
+        } else if (right != null) {
+            drawableWidth = right.getIntrinsicWidth();
+            position = DrawablePosition.RIGHT;
+        } else {
+            position = DrawablePosition.NONE;
+        }
 
-
-
-
-
+        requestLayout();
+    }
+```
 
 
 
