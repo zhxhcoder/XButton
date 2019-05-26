@@ -3,11 +3,11 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 15
         versionName "3.9"
     }
@@ -60,9 +60,8 @@ task copyApk {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.12'
-}
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+.,h}
 
 def siteUrl = 'https://github.com/zhxhcoder/XButton'   //项目的主页
 def gitUrl = 'https://github.com/zhxhcoder/XButton.git'   //github仓库的地址
